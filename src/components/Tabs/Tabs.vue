@@ -18,7 +18,6 @@ const tabItems = [
   {
     text: "Lorem",
     id: 3,
-    component: undefined,
   },
 ];
 
@@ -50,7 +49,12 @@ const activeTabComponent = computed(() => {
     </div>
 
     <div class="gameboard-tab-content">
-      <div class="gameboard-tab-content_title" v-if="activeTab"></div>
+      <div
+        class="gameboard-tab-content_title"
+        v-if="activeTab && activeTabComponent"
+      >
+        {{ activeTab }}
+      </div>
       <keep-alive>
         <component
           :is="activeTabComponent"
@@ -59,7 +63,6 @@ const activeTabComponent = computed(() => {
         />
       </keep-alive>
       <div class="" v-if="!activeTabComponent">no data!</div>
-      <div class="" v-if="!activeTab">no content</div>
     </div>
   </div>
 </template>
@@ -93,6 +96,17 @@ const activeTabComponent = computed(() => {
         background: rgba(255, 237, 213, 1);
       }
     }
+  }
+}
+
+.gameboard-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &_title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 </style>
