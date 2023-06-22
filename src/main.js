@@ -32,6 +32,8 @@ import {
   faGem,
   faCoins,
   faArrowRight,
+  faHouse,
+  faIndustry,
 } from "@fortawesome/free-solid-svg-icons";
 
 // ADD ICONS TO LIBRARY
@@ -42,7 +44,9 @@ library.add(
   faFlask,
   faGem,
   faCoins,
-  faArrowRight
+  faArrowRight,
+  faHouse,
+  faIndustry
 );
 
 // CREATE PINIA

@@ -18,7 +18,7 @@ import Lifecycle_Button from "../components/Lifecycle/Lifecycle_Button.vue";
       <div class="gameboard-grid-bottom">
         <Tabs />
       </div>
-      <!-- <Lifecycle_Button /> -->
+      <Lifecycle_Button />
     </div>
   </main>
 </template>

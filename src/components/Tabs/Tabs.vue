@@ -2,13 +2,18 @@
 import { computed } from "vue";
 import { useStorage } from "@vueuse/core";
 
-import Resources from "../Resources/Resources.vue";
+import Tab_Main from "./Tab_Main.vue";
 import Resource_Happiness from "../Resources/Resource_Happiness.vue";
 const tabItems = [
   {
-    text: "City",
+    text: "Main",
     id: 1,
-    component: Resources,
+    component: Tab_Main,
+  },
+  {
+    text: "Jobs",
+    id: 2,
+    component: Resource_Happiness,
   },
   {
     text: "Buildings",
@@ -16,7 +21,7 @@ const tabItems = [
     component: Resource_Happiness,
   },
   {
-    text: "Lorem",
+    text: "FAQ",
     id: 3,
   },
 ];
