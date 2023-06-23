@@ -2,19 +2,19 @@
 import { watchEffect } from "vue";
 import { useAlarmStore } from "../../stores/status/alarms";
 
-const alarmsStore = useAlarmStore();
-const alarmsItem = Array.from(
-  { length: alarmsStore.alarmsLevelForEnd },
-  (_, i) => ({ id: i })
-);
+const alarmCycle = useAlarmStore();
+const alarmsItem = Array.from({ length: alarmCycle.maxAlarmLevel }, (_, i) => ({
+  id: i,
+}));
 
 watchEffect(() => {
   alarmsItem.forEach((item, i) => {
-    item.color = i < alarmsStore.alarmsLevel ? "rgb(239, 68, 68)" : "#f3f4f6";
+    item.color = i < alarmCycle.alarmLevel ? "rgb(239, 68, 68)" : "#f3f4f6";
   });
 
-  if (alarmsStore.alarmsLevel >= alarmsStore.alarmsLevelForEnd) {
-    alarmsStore.alarmsLevel = 0;
+  if (alarmCycle.alarmLevel >= alarmCycle.maxAlarmLevel) {
+    alarmCycle.alarmLevel = 0;
+    console.log("game over");
     alarmsItem.forEach((item) => {
       item.color = "#f3f4f6";
     });
@@ -34,10 +34,12 @@ watchEffect(() => {
     <div class="alarm-icon">
       <font-awesome-icon :icon="['fas', 'circle-question']" />
       <div class="disaster-popover">
-        To the game over: {{ alarmsStore.alarmsLevel }}/{{ alarmsItem.length }}
+        To the game over: {{ alarmCycle.alarmLevel }}/{{ alarmsItem.length }}
       </div>
     </div>
-    <button @click="alarmsStore.incrementAlarm">deneme</button>
+    <button @click="alarmCycle.incrementAlarm" style="margin-right: 1rem">
+      increment
+    </button>
   </div>
 </template>
 

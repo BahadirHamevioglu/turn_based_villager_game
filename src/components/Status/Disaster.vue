@@ -1,25 +1,29 @@
 <script setup>
-import { ref, watchEffect } from "vue";
+import { useDisasterStore } from "../../stores/status/disaster";
+import { watchEffect } from "vue";
 
-const disasterLevel = ref(0);
+const disasterCycle = useDisasterStore();
 
-const disasterBarItem = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
+const disasterBar = Array.from(
+  { length: disasterCycle.disasterCycleLocalStorage },
+  (_, i) => ({
+    id: i,
+  })
+);
 
 watchEffect(() => {
-  disasterLevel.value = Math.floor(Math.random() * 5) + 1;
-  for (let i = 0; i < disasterLevel.value; i++) {
-    disasterBarItem[i].color = "rgb(239, 68, 68)";
-  }
-  for (let i = disasterLevel.value; i < disasterBarItem.length; i++) {
-    disasterBarItem[i].color = "#f3f4f6";
-  }
+  disasterBar.forEach((item, i) => {
+    item.color =
+      i < disasterCycle.currentDisasterValue ? "rgb(239, 68, 68)" : "#f3f4f6";
+  });
 
-  if (disasterLevel.value >= 5) {
-    disasterLevel.value = 0;
-    disasterBarItem.forEach((item) => {
+  if (
+    disasterCycle.currentDisasterValue > disasterCycle.disasterCycleLocalStorage
+  ) {
+    disasterCycle.currentDisasterValue = 0;
+    disasterBar.forEach((item) => {
       item.color = "#f3f4f6";
     });
-    console.log("Game Over");
   }
 });
 </script>
@@ -28,14 +32,16 @@ watchEffect(() => {
   <div class="disaster-bar">
     <div
       class="disaster-item"
-      v-for="item in disasterBarItem"
+      v-for="item in disasterBar"
       :style="{ background: item.color }"
     ></div>
     <div class="disaster-icon">
       <font-awesome-icon :icon="['fas', 'circle-question']" />
 
       <div class="disaster-popover">
-        To the next disaster: {{ disasterLevel }}/{{ disasterBarItem.length }}
+        To the next disaster: {{ disasterCycle.currentDisasterValue }}/{{
+          disasterBar.length
+        }}
       </div>
     </div>
   </div>

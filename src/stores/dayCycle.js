@@ -1,20 +1,32 @@
+import { ref, watchEffect } from "vue";
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 
-import { useHealthStore, health1 } from "./resources/health";
+import { useDisasterStore } from "./status/disaster.js";
+const disasterCycle = useDisasterStore();
 
-const health = useHealthStore();
+const START_DAY = 1;
+const CURRENT_DAY = useStorage("currentDay", START_DAY);
 
-let currentHealth = health.health;
+export const useDayStore = defineStore("dayCycle", () => {
+  const currentDay = ref(CURRENT_DAY.value);
+  const currentDayLocalStorage = ref(CURRENT_DAY.value);
 
-export const useDayCycleStore = defineStore("dayCycle", {
-  state: () => ({ day: 1 }),
-  actions: {
-    newDay() {
-      this.day++;
+  function incrementDay() {
+    currentDay.value++;
+    CURRENT_DAY.value = currentDay.value;
+    disasterCycle.incrementDisaster();
+  }
 
-      health.healthIncrement(10);
+  watchEffect(() => {
+    currentDayLocalStorage.value = CURRENT_DAY.value;
+  });
 
-      console.log(currentHealth);
-    },
-  },
+  return {
+    currentDay,
+    currentDayLocalStorage,
+    incrementDay,
+  };
 });
+
+export default useDayStore;

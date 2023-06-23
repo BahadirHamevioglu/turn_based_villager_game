@@ -2,36 +2,35 @@ import { ref, watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
-const STARTER_ALARM = 0;
-const END_ALARM = 3;
+const ALARM_LEVEL = 0;
+const MAX_ALARM = 3;
 
-const activeAlarmLocalStorage = useStorage("activeAlarm", STARTER_ALARM);
+const alarmLevelLocalStorage = useStorage("alarmLevel", ALARM_LEVEL);
+const maxAlarmLocalStorage = useStorage("maxAlarm", MAX_ALARM);
 
 export const useAlarmStore = defineStore("alarm", () => {
-  const alarmsLevel = ref(STARTER_ALARM);
-  const alarmsLevelForEnd = ref(END_ALARM);
-  const activeAlarmLocalStorageStore = ref(activeAlarmLocalStorage.value);
+  const alarmLevel = ref(alarmLevelLocalStorage.value);
+  const maxAlarmLevel = ref(maxAlarmLocalStorage.value);
 
   function incrementAlarm() {
-    alarmsLevel.value += 1;
-    activeAlarmLocalStorage.value = alarmsLevel.value;
-
-    if (alarmsLevel.value >= alarmsLevelForEnd.value) {
-      gameOver();
-    }
+    alarmLevel.value++;
   }
 
   function gameOver() {
-    if (alarmsLevel.value >= alarmsLevelForEnd.value) {
-      activeAlarmLocalStorage.value = STARTER_ALARM;
+    if (alarmLevel.value >= maxAlarmLevel.value) {
+      alarmLevel.value = ALARM_LEVEL;
       return true;
     }
   }
 
+  watchEffect(() => {
+    alarmLevelLocalStorage.value = alarmLevel.value;
+    maxAlarmLocalStorage.value = maxAlarmLevel.value;
+  });
+
   return {
-    alarmsLevel,
-    alarmsLevelForEnd,
-    activeAlarmLocalStorageStore,
+    alarmLevel,
+    maxAlarmLevel,
     incrementAlarm,
     gameOver,
   };

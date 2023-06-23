@@ -1,9 +1,9 @@
 <script setup>
 import GBButton from "../Button.vue";
 
-import { useDayCycleStore } from "../../stores/dayCycle";
+import { useDayStore } from "../../stores/dayCycle";
 
-const dayCycle = useDayCycleStore();
+const dayCycle = useDayStore();
 </script>
 
 <template>
@@ -12,14 +12,14 @@ const dayCycle = useDayCycleStore();
       size="lg"
       :disabled="false"
       type="primary"
-      @click="dayCycle.newDay()"
+      @click="dayCycle.incrementDay()"
     >
-      Next Day (Day <span>{{ dayCycle.day }} </span>
+      Next Day (Day <span>{{ dayCycle.currentDay }} </span>
       <font-awesome-icon
         :icon="['fas', 'arrow-right']"
         style="font-size: 0.75rem"
       />
-      <span> {{ dayCycle.day + 1 }}</span>
+      <span> {{ dayCycle.currentDay + 1 }}</span>
       )</GBButton
     >
   </div>
