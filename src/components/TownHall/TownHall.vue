@@ -1,20 +1,21 @@
-<script setup></script>
+<script setup>
+import GBButton from "../Button.vue";
+</script>
 
 <template>
-  <div class="gameboard-town-hall">
-    <div class="gameboard-town-hall_image">
+  <div class="town-hall">
+    <div class="town-hall-image">
       <img src="/town-hall.png" alt="town hall" />
     </div>
-    <div class="gameboard-town-hall_info">
-      <div class="gameboard-town-hall_info_top">
-        <div class="gameboard-town-hall_level">Level 1</div>
-        <button class="gameboard-town-hall_level_up-button disabled">
-          Upgrade
-        </button>
+    <div class="town-hall-info">
+      <div class="town-hall-info-top">
+        <div class="town-hall-level">Level 1</div>
+        <GBButton size="md" :disabled="false" type="primary">Upgrade</GBButton>
       </div>
-      <div class="gameboard-town-hall_info_bottom">
-        <div class="gameboard-town-citizens">
-          <span class="gameboard-town-citizens_value">10</span>
+      <div class="town-hall-info-bottom">
+        <div class="town-citizens">
+          <font-awesome-icon :icon="['fas', 'user-group']" />
+          <span class="town-citizens-value">10</span>
         </div>
       </div>
     </div>
@@ -22,7 +23,7 @@
 </template>
 
 <style lang="scss">
-.gameboard-town-hall {
+.town-hall {
   background-color: rgb(243, 244, 246);
   border-radius: 0.5rem;
   padding: 2rem;
@@ -32,7 +33,7 @@
   align-items: center;
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
-  .gameboard-town-hall_image {
+  .town-hall-image {
     width: 72px;
     height: 77.47px;
     border-radius: 0.5rem;
@@ -43,18 +44,18 @@
     }
   }
 
-  .gameboard-town-hall_info {
+  .town-hall-info {
     display: flex;
     flex-direction: column;
 
-    &_top {
+    &-top {
       display: flex;
       gap: 1rem;
-      .gameboard-town-hall_level {
+      .town-hall-level {
         font-size: 30px;
         line-height: 2.25rem;
       }
-      .gameboard-town-hall_level_up-button {
+      .town-hall-level-up-button {
         font-size: 1rem;
         line-height: 1.5rem;
         padding: 0.25rem 0.75rem;
@@ -78,12 +79,12 @@
         }
       }
     }
-    &_bottom {
+    &-bottom {
       display: flex;
       flex-direction: row;
       align-items: center;
 
-      .gameboard-town-citizens {
+      .town-citizens {
         display: flex;
         align-items: center;
         justify-content: center;

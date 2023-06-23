@@ -41,23 +41,20 @@ const activeTabComponent = computed(() => {
 </script>
 
 <template>
-  <div class="gameboard-tabs">
-    <div class="gameboard-tab-buttons">
+  <div class="tabs">
+    <div class="tab-buttons">
       <button
         v-for="(item, index) in tabItems"
         :key="item.id"
         @click="() => setActiveTab(index)"
-        :class="['gameboard-tab-button', { active: activeTab === item.text }]"
+        :class="['tab-button', { active: activeTab === item.text }]"
       >
         {{ item.text }}
       </button>
     </div>
 
-    <div class="gameboard-tab-content">
-      <div
-        class="gameboard-tab-content_title"
-        v-if="activeTab && activeTabComponent"
-      >
+    <div class="tab-content">
+      <div class="tab-content-title" v-if="activeTab && activeTabComponent">
         {{ activeTab }}
       </div>
       <keep-alive>
@@ -73,7 +70,7 @@ const activeTabComponent = computed(() => {
 </template>
 
 <style lang="scss">
-.gameboard-tabs {
+.tabs {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -81,13 +78,13 @@ const activeTabComponent = computed(() => {
   width: 100%;
   padding: 1rem 0;
 
-  .gameboard-tab-buttons {
+  .tab-buttons {
     display: flex;
     align-items: center;
     width: 100%;
     gap: 1rem;
 
-    .gameboard-tab-button {
+    .tab-button {
       border-radius: 0.5rem;
       font-weight: 700;
       font-size: 0.875rem;
@@ -104,12 +101,12 @@ const activeTabComponent = computed(() => {
   }
 }
 
-.gameboard-tab-content {
+.tab-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
-  &_title {
+  &-title {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }

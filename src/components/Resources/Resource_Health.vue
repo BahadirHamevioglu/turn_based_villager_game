@@ -1,16 +1,15 @@
 <script>
 import Resources_Item from "./Resources_Item.vue";
 
+import { useHealthStore } from "../../stores/resources/health";
+
+const health = useHealthStore();
+
 export default {
   data() {
     return {
-      value: 40,
+      value: health.health,
     };
-  },
-  methods: {
-    updateValue() {
-      this.value += 1;
-    },
   },
   components: {
     Resources_Item,

@@ -1,6 +1,6 @@
 <script setup>
 // COMPONENTS
-import Disaster from "../components/Disaster.vue";
+import GameStatus from "../components/Status/GameStatus.vue";
 import TownHall from "../components/TownHall/TownHall.vue";
 import Resources from "../components/Resources/Resources.vue";
 import Tabs from "../components/Tabs/Tabs.vue";
@@ -10,7 +10,7 @@ import Lifecycle_Button from "../components/Lifecycle/Lifecycle_Button.vue";
 <template>
   <main>
     <div class="gameboard">
-      <Disaster />
+      <GameStatus />
       <div class="gameboard-grid-top">
         <TownHall />
         <Resources />

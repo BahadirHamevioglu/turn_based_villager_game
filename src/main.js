@@ -34,6 +34,9 @@ import {
   faArrowRight,
   faHouse,
   faIndustry,
+  faUserGroup,
+  faCircleQuestion,
+  faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 
 // ADD ICONS TO LIBRARY
@@ -46,7 +49,10 @@ library.add(
   faCoins,
   faArrowRight,
   faHouse,
-  faIndustry
+  faIndustry,
+  faUserGroup,
+  faCircleQuestion,
+  faTriangleExclamation
 );
 
 // CREATE PINIA

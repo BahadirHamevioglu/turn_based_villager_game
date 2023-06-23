@@ -18,20 +18,20 @@ export default {
 </script>
 
 <template>
-  <div class="gameboard-resources_item">
-    <div class="gameboard-resources_item_icon">
+  <div class="resources-item">
+    <div class="resources-item-icon">
       <font-awesome-icon :icon="icon" class="icon" :style="{ color: color }" />
     </div>
-    <div class="gameboard-resources_item_value">{{ Number(value) }}</div>
+    <div class="resources-item-value">{{ Number(value) }}</div>
 
-    <div class="gameboard-resources_item_value_status">+80</div>
+    <div class="resources-item-value-status">+80</div>
 
     <slot></slot>
   </div>
 </template>
 
 <style lang="scss">
-.gameboard-resources_item {
+.resources-item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -46,7 +46,7 @@ export default {
 
   position: relative;
 
-  &_icon {
+  &-icon {
     width: 1.5rem;
     height: 1.5rem;
     display: flex;
@@ -58,12 +58,12 @@ export default {
     }
   }
 
-  &_value {
+  &-value {
     font-size: 1rem;
     line-height: 1.5rem;
   }
 
-  &_value_status {
+  &-value-status {
     position: absolute;
     top: 50%;
     right: 1rem;
@@ -76,7 +76,7 @@ export default {
     border: 1px solid #bfbfbf;
   }
 
-  &_dropdown {
+  &-dropdown {
     position: absolute;
     top: 110%;
     left: 0;
@@ -95,7 +95,7 @@ export default {
     border-radius: 0.5rem;
     border: 1px solid #bfbfbf;
 
-    &_title {
+    &-title {
       font-weight: 700;
       font-size: 1.125rem;
       line-height: 1.75rem;
@@ -103,31 +103,31 @@ export default {
       color: #000;
     }
 
-    &_items {
+    &-items {
       display: flex;
       flex-direction: column;
 
-      .gameboard-resources_item_dropdown_item {
+      .resources-item-dropdown-item {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
 
-        &_label {
+        &-label {
           font-size: 0.75rem;
           font-weight: 400;
           color: #000;
         }
 
-        &_value {
+        &-value {
           font-size: 0.75rem;
           font-weight: 400;
           color: #000;
         }
       }
 
-      .gameboard-resources_item_dropdown_divider {
+      .resources-item-dropdown-divider {
         height: 1px;
         background: #bfbfbf;
         margin: 0.5rem 0;
@@ -138,7 +138,7 @@ export default {
   &:hover {
     border: 1px solid #bfbfbf;
 
-    .gameboard-resources_item_dropdown {
+    .resources-item-dropdown {
       display: block;
     }
   }

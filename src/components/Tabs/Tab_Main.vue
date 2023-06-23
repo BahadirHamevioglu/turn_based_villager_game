@@ -1,9 +1,9 @@
 <script setup>
-import Tab_Main_Box from "./Tab_Main_Box.vue";
+import Tab_Main_Box from "./Tab_Main-Box.vue";
 </script>
 
 <template>
-  <div class="tabs_main">
+  <div class="tabs-main">
     <Tab_Main_Box
       :icon="['fas', 'house']"
       :value="5"
@@ -20,7 +20,7 @@ import Tab_Main_Box from "./Tab_Main_Box.vue";
 </template>
 
 <style lang="scss" scoped>
-.tabs_main {
+.tabs-main {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 1rem;

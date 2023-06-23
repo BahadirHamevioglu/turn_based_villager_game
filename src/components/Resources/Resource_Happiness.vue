@@ -4,7 +4,7 @@ import Resources_Item from "./Resources_Item.vue";
 export default {
   data() {
     return {
-      value: 100,
+      value: 5,
       dropdownContent: [
         {
           text: "Base", // label
@@ -27,17 +27,17 @@ export default {
     :value="value"
     :class="['resources_happiness']"
   >
-    <div class="gameboard-resources_item_dropdown">
-      <div class="gameboard-resources_item_dropdown_title">Happiness</div>
+    <div class="resources-item-dropdown">
+      <div class="resources-item-dropdown-title">Happiness</div>
       <div
-        class="gameboard-resources_item_dropdown_items"
+        class="resources-item-dropdown-items"
         v-for="content in dropdownContent"
       >
-        <div class="gameboard-resources_item_dropdown_item" :key="content.id">
-          <div class="gameboard-resources_item_dropdown_item_label">
+        <div class="resources-item-dropdown-item" :key="content.id">
+          <div class="resources-item-dropdown-item-label">
             {{ content.text }}
           </div>
-          <div class="gameboard-resources_item_dropdown_item_value">
+          <div class="resources-item-dropdown-item-value">
             {{ content.value }}
           </div>
         </div>

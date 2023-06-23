@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div class="gameboard-resources">
+  <div class="resources">
     <Resource_Happiness />
     <Resource_Health />
     <Resources_Farming />
@@ -30,7 +30,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.gameboard-resources {
+.resources {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;

@@ -10,11 +10,6 @@ const router = createRouter({
       name: "Home",
       component: pageComponent("Home"),
     },
-    {
-      path: "/about",
-      name: "About",
-      component: pageComponent("About"),
-    },
   ],
 });
 
