@@ -3,6 +3,9 @@ import GBButton from "../Button.vue";
 
 import { useLevelStore } from "../../stores/status/level";
 const levelStore = useLevelStore();
+
+import { useCitizensStore } from "../../stores/citizens";
+const citizensStore = useCitizensStore();
 </script>
 
 <template>
@@ -17,27 +20,27 @@ const levelStore = useLevelStore();
         src="/town-hall-1.png"
         alt="town hall"
         v-else-if="
-          levelStore.currentValue >= 60 && levelStore.currentValue < 90
+          levelStore.currentValue >= 30 && levelStore.currentValue < 60
         "
       />
       <img
         src="/town-hall-2.png"
         alt="town hall"
         v-else-if="
-          levelStore.currentValue >= 90 && levelStore.currentValue < 120
+          levelStore.currentValue >= 60 && levelStore.currentValue < 90
         "
       />
       <img
         src="/town-hall-3.png"
         alt="town hall"
         v-else-if="
-          levelStore.currentValue >= 120 && levelStore.currentValue < 150
+          levelStore.currentValue >= 90 && levelStore.currentValue < 120
         "
       />
       <img
         src="/town-hall-4.png"
         alt="town hall"
-        v-else="levelStore.currentValue >= 150"
+        v-else="levelStore.currentValue >= 120"
       />
     </div>
     <div class="town-hall-info">
@@ -54,7 +57,11 @@ const levelStore = useLevelStore();
       <div class="town-hall-info-bottom">
         <div class="town-citizens">
           <font-awesome-icon :icon="['fas', 'user-group']" />
-          <span class="town-citizens-value">10</span>
+          <span class="town-citizens-value"
+            >{{ citizensStore.citizensPopulation }}/{{
+              citizensStore.citizensPopulationMax
+            }}</span
+          >
         </div>
       </div>
     </div>

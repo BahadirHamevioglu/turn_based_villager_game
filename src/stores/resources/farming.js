@@ -1,3 +1,3 @@
 import { createResourceStore } from "./createResourcesStore.js";
 
-export const useFarmingStore = createResourceStore("Farming", 40);
+export const useFarmingStore = createResourceStore("Farming", 10);

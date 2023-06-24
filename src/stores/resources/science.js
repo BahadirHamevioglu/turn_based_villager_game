@@ -1,3 +1,3 @@
 import { createResourceStore } from "./createResourcesStore.js";
 
-export const useScienceStore = createResourceStore("Science", 40);
+export const useScienceStore = createResourceStore("Science", 0);

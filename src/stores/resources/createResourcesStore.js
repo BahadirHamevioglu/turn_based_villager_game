@@ -17,19 +17,19 @@ export const createResourceStore = (storeName, startingValue = 10) => {
     currentValue.value -= number;
 
     if (currentValue.value < 0 && !isAlarmTriggered.value) {
-      alarmCycle.incrementAlarm();
+      alarmCycle.incrementValue(1);
       isAlarmTriggered.value = true;
     }
 
     if (currentValue.value > 0 && isAlarmTriggered.value) {
-      alarmCycle.decrementAlarm();
+      alarmCycle.incrementValue(1);
       isAlarmTriggered.value = false;
     }
   }
 
   watchEffect(() => {
     if (currentValue.value >= 0 && isAlarmTriggered.value) {
-      alarmCycle.decrementAlarm();
+      alarmCycle.incrementValue(1);
       isAlarmTriggered.value = false;
     }
   });

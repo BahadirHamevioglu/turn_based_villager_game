@@ -21,7 +21,7 @@ const tabItems = [
     component: Resource_Happiness,
   },
   {
-    text: "FAQ",
+    text: "How To Play",
     id: 3,
   },
 ];

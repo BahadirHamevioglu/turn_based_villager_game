@@ -6,7 +6,7 @@ import { useDisasterStore } from "./status/disaster";
 const disasterCycle = useDisasterStore();
 
 export const useDayStore = defineStore("dayCycle", () => {
-  const currentDay = useStorage("currentDay", ref(1));
+  const currentDay = useStorage("currentDay", 1);
 
   function incrementDay(number) {
     currentDay.value += number;
