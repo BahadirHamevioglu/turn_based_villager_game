@@ -1,3 +1,9 @@
 import { createStatusStore } from "./createStatusStore";
 
-export const useLevelStore = createStatusStore("Level", 1);
+const startingLevel = 1;
+const maxLevel = startingLevel * 2;
+export const useLevelStore = createStatusStore(
+  "Level",
+  startingLevel,
+  maxLevel
+);
