@@ -1,21 +1,27 @@
 <script setup>
-import { watchEffect, ref } from "vue";
+import { watchEffect, computed } from "vue";
 import { useAlarmStore } from "../../stores/status/alarms";
 
 const alarmCycle = useAlarmStore();
-const alarmsItem = Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
-  id: i,
-}));
+// const alarmsItem = Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
+//   id: i,
+// }));
+
+const alarmsItem = computed(() => {
+  return Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
+    id: i,
+  }));
+});
 
 watchEffect(() => {
-  alarmsItem.forEach((item, i) => {
+  alarmsItem.value.forEach((item, i) => {
     item.color = i < alarmCycle.currentValue ? "rgb(239, 68, 68)" : "#f3f4f6";
   });
 
   if (alarmCycle.currentValue >= alarmCycle.maxValue) {
     alarmCycle.currentValue = 0;
     console.log("game over");
-    alarmsItem.forEach((item) => {
+    alarmsItem.value.forEach((item) => {
       item.color = "#f3f4f6";
     });
   }
