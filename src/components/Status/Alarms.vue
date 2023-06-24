@@ -3,14 +3,12 @@ import { watchEffect, ref } from "vue";
 import { useAlarmStore } from "../../stores/status/alarms";
 
 const alarmCycle = useAlarmStore();
-const alarmsItem = ref(
-  Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
-    id: i,
-  }))
-);
+const alarmsItem = Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
+  id: i,
+}));
 
 watchEffect(() => {
-  alarmsItem.value.forEach((item, i) => {
+  alarmsItem.forEach((item, i) => {
     item.color = i < alarmCycle.currentValue ? "rgb(239, 68, 68)" : "#f3f4f6";
   });
 
