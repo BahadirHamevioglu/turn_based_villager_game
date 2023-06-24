@@ -1,4 +1,4 @@
-import { ref, watchEffect } from "vue";
+import { watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
@@ -6,11 +6,8 @@ import { useAlarmStore } from "../status/alarms.js";
 
 export const createResourceStore = (storeName, startingValue = 10) => {
   const alarmCycle = useAlarmStore();
-  const isAlarmTriggered = useStorage(
-    `isAlarmTriggeredFor${storeName}`,
-    ref(false)
-  );
-  const currentValue = useStorage(`current${storeName}`, ref(startingValue));
+  const isAlarmTriggered = useStorage(`isAlarmTriggeredFor${storeName}`, false);
+  const currentValue = useStorage(`current${storeName}`, startingValue);
 
   function incrementValue(number) {
     currentValue.value += number;

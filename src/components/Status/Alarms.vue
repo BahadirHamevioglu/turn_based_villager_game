@@ -3,10 +3,6 @@ import { watchEffect, computed } from "vue";
 import { useAlarmStore } from "../../stores/status/alarms";
 
 const alarmCycle = useAlarmStore();
-// const alarmsItem = Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
-//   id: i,
-// }));
-
 const alarmsItem = computed(() => {
   return Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
     id: i,

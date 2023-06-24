@@ -11,43 +11,43 @@ const levelStore = useLevelStore();
       <img
         src="/town-hall.png"
         alt="town hall"
-        v-if="levelStore.currentLevel <= 30"
+        v-if="levelStore.currentValue < 30"
       />
       <img
         src="/town-hall-1.png"
         alt="town hall"
         v-else-if="
-          levelStore.currentLevel <= 60 && levelStore.currentLevel > 30
+          levelStore.currentValue >= 60 && levelStore.currentValue < 90
         "
       />
       <img
         src="/town-hall-2.png"
         alt="town hall"
         v-else-if="
-          levelStore.currentLevel <= 90 && levelStore.currentLevel > 60
+          levelStore.currentValue >= 90 && levelStore.currentValue < 120
         "
       />
       <img
         src="/town-hall-3.png"
         alt="town hall"
         v-else-if="
-          levelStore.currentLevel <= 120 && levelStore.currentLevel > 90
+          levelStore.currentValue >= 120 && levelStore.currentValue < 150
         "
       />
       <img
         src="/town-hall-4.png"
         alt="town hall"
-        v-else="levelStore.currentLevel > 120"
+        v-else="levelStore.currentValue >= 150"
       />
     </div>
     <div class="town-hall-info">
       <div class="town-hall-info-top">
-        <div class="town-hall-level">Level {{ levelStore.currentLevel }}</div>
+        <div class="town-hall-level">Level {{ levelStore.currentValue }}</div>
         <GBButton
           size="md"
           :disabled="false"
           type="primary"
-          @click="levelStore.incrementLevel(1)"
+          @click="levelStore.incrementValue(1)"
           >Upgrade</GBButton
         >
       </div>
