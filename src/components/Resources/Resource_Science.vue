@@ -1,13 +1,15 @@
-<script>
-import Resources_Item from "./Resources_Item.vue";
+<script setup>
+import { useScienceStore } from "../../stores/resources/science";
 
-export default {
-  components: {
-    Resources_Item,
-  },
-};
+const science = useScienceStore();
+
+import Resources_Item from "./Resources_Item.vue";
 </script>
 
 <template>
-  <Resources_Item :icon="['fas', 'flask']" color="#059669" value="0" />
+  <Resources_Item
+    :icon="['fas', 'flask']"
+    color="#059669"
+    :value="science.currentValue"
+  />
 </template>

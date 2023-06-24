@@ -1,19 +1,21 @@
 <script setup>
-import { watchEffect } from "vue";
+import { watchEffect, ref } from "vue";
 import { useAlarmStore } from "../../stores/status/alarms";
 
 const alarmCycle = useAlarmStore();
-const alarmsItem = Array.from({ length: alarmCycle.maxAlarmLevel }, (_, i) => ({
-  id: i,
-}));
+const alarmsItem = ref(
+  Array.from({ length: alarmCycle.maxValue }, (_, i) => ({
+    id: i,
+  }))
+);
 
 watchEffect(() => {
-  alarmsItem.forEach((item, i) => {
-    item.color = i < alarmCycle.alarmLevel ? "rgb(239, 68, 68)" : "#f3f4f6";
+  alarmsItem.value.forEach((item, i) => {
+    item.color = i < alarmCycle.currentValue ? "rgb(239, 68, 68)" : "#f3f4f6";
   });
 
-  if (alarmCycle.alarmLevel >= alarmCycle.maxAlarmLevel) {
-    alarmCycle.alarmLevel = 0;
+  if (alarmCycle.currentValue >= alarmCycle.maxValue) {
+    alarmCycle.currentValue = 0;
     console.log("game over");
     alarmsItem.forEach((item) => {
       item.color = "#f3f4f6";
@@ -34,11 +36,14 @@ watchEffect(() => {
     <div class="alarm-icon">
       <font-awesome-icon :icon="['fas', 'circle-question']" />
       <div class="disaster-popover">
-        To the game over: {{ alarmCycle.alarmLevel }}/{{ alarmsItem.length }}
+        To the game over: {{ alarmCycle.currentValue }}/{{ alarmsItem.length }}
       </div>
     </div>
-    <button @click="alarmCycle.incrementAlarm" style="margin-right: 1rem">
-      increment
+    <button @click="alarmCycle.incrementValue(1)" style="margin-right: 1rem">
+      increment alarm level
+    </button>
+    <button @click="alarmCycle.incrementMaxValue(1)" style="margin-right: 1rem">
+      increment max level
     </button>
   </div>
 </template>
@@ -50,7 +55,9 @@ watchEffect(() => {
   gap: 0rem;
   justify-content: flex-start;
   align-items: center;
-
+  max-width: 580px;
+  overflow-x: auto;
+  overflow-y: hidden;
   .alarm-item {
     width: 2rem;
     height: 1rem;

@@ -1,31 +1,29 @@
-<script>
+<script setup>
 import Resources_Item from "./Resources_Item.vue";
 
-export default {
-  data() {
-    return {
-      value: 5,
-      dropdownContent: [
-        {
-          text: "Base", // label
-          value: this.value || 100, // value
-          id: 1, // id
-        },
-      ],
-    };
+import { useHappinessStore } from "../../stores/resources/happiness";
+const happiness = useHappinessStore();
+
+const dropdownContent = [
+  {
+    id: 0,
+    text: "Happiness",
+    value: happiness.currentValue,
   },
-  components: {
-    Resources_Item,
-  },
-};
+];
 </script>
 
 <template>
   <Resources_Item
     :icon="['fas', 'face-smile']"
-    color="#65a30d"
-    :value="value"
-    :class="['resources_happiness']"
+    :value="happiness.currentValue"
+    :color="happiness.currentValue < 0 ? 'rgb(239, 68, 68)' : '#65a30d'"
+    :class="[
+      'resources-happiness',
+      happiness.currentValue < 0
+        ? 'resources-happiness--negative'
+        : 'resources-happiness--positive',
+    ]"
   >
     <div class="resources-item-dropdown">
       <div class="resources-item-dropdown-title">Happiness</div>
@@ -47,13 +45,18 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.resources_happiness {
-  border: 2px solid #84cc16;
+.resources-happiness {
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #65a30d;
-  &:hover {
+
+  &--negative {
+    border: 2px solid rgb(239, 68, 68);
+    color: rgb(239, 68, 68);
+  }
+
+  &--positive {
     border: 2px solid #84cc16;
+    color: #65a30d;
   }
 }
 </style>

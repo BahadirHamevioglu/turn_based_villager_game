@@ -24,7 +24,7 @@ export default {
     </div>
     <div class="resources-item-value">{{ Number(value) }}</div>
 
-    <div class="resources-item-value-status">+80</div>
+    <div class="resources-item-value-status" style="display: none">+80</div>
 
     <slot></slot>
   </div>

@@ -2,30 +2,30 @@ import { ref, watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
-import { useDisasterStore } from "./status/disaster.js";
+import { useDisasterStore } from "./status/disaster";
 const disasterCycle = useDisasterStore();
 
-const START_DAY = 1;
-const CURRENT_DAY = useStorage("currentDay", START_DAY);
-
 export const useDayStore = defineStore("dayCycle", () => {
-  const currentDay = ref(CURRENT_DAY.value);
-  const currentDayLocalStorage = ref(CURRENT_DAY.value);
+  const currentDay = useStorage("currentDay", ref(1));
 
-  function incrementDay() {
-    currentDay.value++;
-    CURRENT_DAY.value = currentDay.value;
-    disasterCycle.incrementDisaster();
+  function incrementDay(number) {
+    currentDay.value += number;
+    disasterCycle.incrementValue(1);
+  }
+  function decrementDay(number) {
+    currentDay.value -= number;
   }
 
   watchEffect(() => {
-    currentDayLocalStorage.value = CURRENT_DAY.value;
+    if (currentDay.value % 10 === 0) {
+      console.log("level up");
+    }
   });
 
   return {
     currentDay,
-    currentDayLocalStorage,
     incrementDay,
+    decrementDay,
   };
 });
 

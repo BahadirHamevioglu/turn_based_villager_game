@@ -4,19 +4,23 @@ import { watchEffect } from "vue";
 
 const disasterCycle = useDisasterStore();
 
-const disasterBar = Array.from({ length: disasterCycle.maxValue }, (_, i) => ({
-  id: i,
-}));
+const disasterBar = Array.from(
+  { length: disasterCycle.disasterCycleLocalStorage },
+  (_, i) => ({
+    id: i,
+  })
+);
 
 watchEffect(() => {
   disasterBar.forEach((item, i) => {
     item.color =
-      i < disasterCycle.currentValue ? "rgb(239, 68, 68)" : "#f3f4f6";
+      i < disasterCycle.currentDisasterValue ? "rgb(239, 68, 68)" : "#f3f4f6";
   });
 
-  if (disasterCycle.currentValue > disasterCycle.maxValue) {
-    disasterCycle.currentValue = 0;
-    console.log("DISASTER");
+  if (
+    disasterCycle.currentDisasterValue > disasterCycle.disasterCycleLocalStorage
+  ) {
+    disasterCycle.currentDisasterValue = 0;
     disasterBar.forEach((item) => {
       item.color = "#f3f4f6";
     });
@@ -35,7 +39,7 @@ watchEffect(() => {
       <font-awesome-icon :icon="['fas', 'circle-question']" />
 
       <div class="disaster-popover">
-        To the next disaster: {{ disasterCycle.currentValue }}/{{
+        To the next disaster: {{ disasterCycle.currentDisasterValue }}/{{
           disasterBar.length
         }}
       </div>

@@ -1,18 +1,15 @@
-<script>
+<script setup>
 import Resources_Item from "./Resources_Item.vue";
 
-export default {
-  components: {
-    Resources_Item,
-  },
-};
+import { useGoldStore } from "../../stores/resources/gold";
+const gold = useGoldStore();
 </script>
 
 <template>
   <Resources_Item
     :icon="['fas', 'coins']"
     color="#eab308"
-    value="40"
+    :value="gold.currentValue"
     :class="['resources_gold']"
   />
 </template>

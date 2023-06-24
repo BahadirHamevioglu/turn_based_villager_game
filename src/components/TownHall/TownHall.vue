@@ -1,16 +1,55 @@
 <script setup>
 import GBButton from "../Button.vue";
+
+import { useLevelStore } from "../../stores/status/level";
+const levelStore = useLevelStore();
 </script>
 
 <template>
   <div class="town-hall">
     <div class="town-hall-image">
-      <img src="/town-hall.png" alt="town hall" />
+      <img
+        src="/town-hall.png"
+        alt="town hall"
+        v-if="levelStore.currentLevel <= 30"
+      />
+      <img
+        src="/town-hall-1.png"
+        alt="town hall"
+        v-else-if="
+          levelStore.currentLevel <= 60 && levelStore.currentLevel > 30
+        "
+      />
+      <img
+        src="/town-hall-2.png"
+        alt="town hall"
+        v-else-if="
+          levelStore.currentLevel <= 90 && levelStore.currentLevel > 60
+        "
+      />
+      <img
+        src="/town-hall-3.png"
+        alt="town hall"
+        v-else-if="
+          levelStore.currentLevel <= 120 && levelStore.currentLevel > 90
+        "
+      />
+      <img
+        src="/town-hall-4.png"
+        alt="town hall"
+        v-else="levelStore.currentLevel > 120"
+      />
     </div>
     <div class="town-hall-info">
       <div class="town-hall-info-top">
-        <div class="town-hall-level">Level 1</div>
-        <GBButton size="md" :disabled="false" type="primary">Upgrade</GBButton>
+        <div class="town-hall-level">Level {{ levelStore.currentLevel }}</div>
+        <GBButton
+          size="md"
+          :disabled="false"
+          type="primary"
+          @click="levelStore.incrementLevel(1)"
+          >Upgrade</GBButton
+        >
       </div>
       <div class="town-hall-info-bottom">
         <div class="town-citizens">
@@ -40,7 +79,7 @@ import GBButton from "../Button.vue";
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: fill;
     }
   }
 

@@ -12,7 +12,7 @@ const dayCycle = useDayStore();
       size="lg"
       :disabled="false"
       type="primary"
-      @click="dayCycle.incrementDay()"
+      @click="dayCycle.incrementDay(1)"
     >
       Next Day (Day <span>{{ dayCycle.currentDay }} </span>
       <font-awesome-icon

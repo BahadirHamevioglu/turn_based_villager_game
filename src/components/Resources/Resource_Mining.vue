@@ -1,13 +1,14 @@
-<script>
+<script setup>
 import Resources_Item from "./Resources_Item.vue";
 
-export default {
-  components: {
-    Resources_Item,
-  },
-};
+import { useMiningStore } from "../../stores/resources/mining";
+const mining = useMiningStore();
 </script>
 
 <template>
-  <Resources_Item :icon="['fas', 'gem']" color="#2563eb" value="0" />
+  <Resources_Item
+    :icon="['fas', 'gem']"
+    color="#2563eb"
+    :value="mining.currentValue"
+  />
 </template>
