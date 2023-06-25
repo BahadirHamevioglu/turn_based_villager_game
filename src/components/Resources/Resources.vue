@@ -4,6 +4,7 @@ import Resource_Health from "./Resource_Health.vue";
 import Resources_Farming from "./Resource_Farming.vue";
 import Resource_Mining from "./Resource_Mining.vue";
 import Resource_Science from "./Resource_Science.vue";
+import Resource_Electric from "./Resource_Electric.vue";
 import Resource_Gold from "./Resource_Gold.vue";
 
 export default {
@@ -13,6 +14,7 @@ export default {
     Resources_Farming,
     Resource_Mining,
     Resource_Science,
+    Resource_Electric,
     Resource_Gold,
   },
 };
@@ -25,6 +27,7 @@ export default {
     <Resources_Farming />
     <Resource_Mining />
     <Resource_Science />
+    <Resource_Electric />
     <Resource_Gold />
   </div>
 </template>

@@ -1,7 +1,7 @@
 import { createBuildingStore } from "./createBuildingsStore.js";
 
-export const useHouseBuildStore = createBuildingStore(
-  "House", // storeName
+export const useScienceCenterBuildStore = createBuildingStore(
+  "Science Center", // storeName
   0, // owned
   8, // cost,
   3, // addCitizens

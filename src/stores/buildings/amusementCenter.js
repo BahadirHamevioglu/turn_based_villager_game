@@ -1,7 +1,7 @@
 import { createBuildingStore } from "./createBuildingsStore.js";
 
-export const useMineBuildStore = createBuildingStore(
-  "Mine", // storeName
+export const useAmusementCenterBuildStore = createBuildingStore(
+  "Amusement Center", // storeName
   0, // owned
   15, // cost,
   0, // addCitizens
@@ -9,5 +9,6 @@ export const useMineBuildStore = createBuildingStore(
   -1, // healthEffect
   0, // farmingEffect
   3, // miningEffect
-  0 // scienceEffect
+  0, // scienceEffect
+  0 // electricEffect
 );

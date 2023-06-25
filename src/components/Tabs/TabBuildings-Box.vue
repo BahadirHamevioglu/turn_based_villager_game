@@ -13,11 +13,6 @@ const props = defineProps({
     required: true,
     default: "NO DATA!!!",
   },
-  description: {
-    type: String,
-    required: true,
-    default: "NO DATA!!!",
-  },
   disabled: {
     type: Boolean,
     required: true,
@@ -63,9 +58,6 @@ watchEffect(() => {
     </div>
     <div class="buildings-tab-item-content">
       <div class="buildings-tab-item-title">{{ props.name }}</div>
-      <div class="buildings-tab-item-description">
-        {{ props.description }}
-      </div>
       <GBButton
         size="md"
         :disabled="props.disabled"
@@ -129,14 +121,7 @@ watchEffect(() => {
   &-title {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
-  &-description {
-    font-size: 14px;
-    font-weight: 400;
     margin-bottom: 1rem;
-    line-height: 1.25;
   }
 
   &-button {

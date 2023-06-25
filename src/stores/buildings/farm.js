@@ -10,5 +10,6 @@ export const useFarmBuildStore = createBuildingStore(
   1, // healthEffect
   3, // farmingEffect
   0, // miningEffect
-  0 // scienceEffect
+  0, // scienceEffect
+  0 // electricEffect
 );

@@ -22,6 +22,9 @@ const scienceStore = useScienceStore();
 import { useCitizensStore } from "../citizens.js";
 const citizensStore = useCitizensStore();
 
+import { useElectricStore } from "../resources/electric.js";
+const electricStore = useElectricStore();
+
 export const createBuildingStore = (
   storeName,
   owned,
@@ -31,7 +34,8 @@ export const createBuildingStore = (
   healthEffect,
   farmingEffect,
   miningEffect,
-  scienceEffect
+  scienceEffect,
+  electricEffect
 ) => {
   const building = useStorage(`building-${storeName}`, {
     name: storeName,
@@ -43,10 +47,14 @@ export const createBuildingStore = (
     farmingEffect: farmingEffect,
     miningEffect: miningEffect,
     scienceEffect: scienceEffect,
+    electricEffect: electricEffect,
   });
 
   function buildNewBuilding() {
-    if (goldStore.currentValue >= building.value.cost) {
+    if (
+      goldStore.currentValue >= building.value.cost ||
+      goldStore.currentValue === building.value.cost
+    ) {
       goldStore.decrementValue(building.value.cost);
       building.value.owned += 1;
       citizensStore.incrementCitizensPopulationMax(building.value.addCitizens);
@@ -76,10 +84,13 @@ export const createBuildingStore = (
         scienceStore.decrementValue(-1 * building.value.scienceEffect);
         console.log(-1 * scienceStore.currentValue);
       }
+      if (building.value.electricEffect >= 0) {
+        electricStore.incrementValue(building.value.electricEffect);
+      } else {
+        electricStore.decrementValue(-1 * building.value.electricEffect);
+      }
     }
   }
-
-  watchEffect(() => {});
 
   return defineStore(`building-${storeName}`, () => ({
     building,
