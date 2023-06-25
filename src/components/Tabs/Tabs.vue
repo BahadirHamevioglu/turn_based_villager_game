@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { useStorage } from "@vueuse/core";
 
 import Tab_Main from "./Tab_Main.vue";
+import TabBuildings from "./TabBuildings.vue";
 import Resource_Happiness from "../Resources/Resource_Happiness.vue";
 const tabItems = [
   {
@@ -18,7 +19,7 @@ const tabItems = [
   {
     text: "Buildings",
     id: 2,
-    component: Resource_Happiness,
+    component: TabBuildings,
   },
   {
     text: "How To Play",

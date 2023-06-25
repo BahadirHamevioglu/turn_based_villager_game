@@ -15,21 +15,16 @@ export const createResourceStore = (storeName, startingValue = 10) => {
 
   function decrementValue(number) {
     currentValue.value -= number;
+  }
 
+  watchEffect(() => {
     if (currentValue.value < 0 && !isAlarmTriggered.value) {
       alarmCycle.incrementValue(1);
       isAlarmTriggered.value = true;
     }
 
-    if (currentValue.value > 0 && isAlarmTriggered.value) {
-      alarmCycle.incrementValue(1);
-      isAlarmTriggered.value = false;
-    }
-  }
-
-  watchEffect(() => {
     if (currentValue.value >= 0 && isAlarmTriggered.value) {
-      alarmCycle.incrementValue(1);
+      alarmCycle.decrementValue(1);
       isAlarmTriggered.value = false;
     }
   });

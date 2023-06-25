@@ -1,13 +1,8 @@
 <script setup>
 import Tab_Main_Box from "./Tab_Main-Box.vue";
 
-import { useHouseStore } from "../../stores/buildings/house";
-const houseStore = useHouseStore();
-
 import { useFarmBuildStore } from "../../stores/buildings/farm";
 const farmBuildStore = useFarmBuildStore();
-
-console.log(farmBuildStore);
 </script>
 
 <template>

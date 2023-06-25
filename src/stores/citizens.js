@@ -15,13 +15,14 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
   function decrementCitizensPopulation(number) {
     citizensPopulation.value -= number;
   }
+  function incrementCitizensPopulationMax(number) {
+    citizensPopulationMax.value += number;
+  }
+  function decrementCitizensPopulationMax(number) {
+    citizensPopulation.value += number;
+  }
 
   watchEffect(() => {
-    citizensPopulationMax.value =
-      Math.floor(levelStore.currentValue * 0.5) <= 2
-        ? 2
-        : Math.floor(levelStore.currentValue * 0.5);
-
     if (citizensPopulation.value > citizensPopulationMax.value) {
       citizensPopulation.value = citizensPopulationMax.value;
     }
@@ -32,6 +33,8 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
     citizensPopulationMax,
     incrementCitizensPopulation,
     decrementCitizensPopulation,
+    incrementCitizensPopulationMax,
+    decrementCitizensPopulationMax,
   };
 });
 

@@ -8,7 +8,7 @@ const props = defineProps({
   type: {
     type: String,
     required: true,
-    default: "primary" || "danger" || "warning" || "success" || "info",
+    default: "primary",
   },
   disabled: {
     type: Boolean,
