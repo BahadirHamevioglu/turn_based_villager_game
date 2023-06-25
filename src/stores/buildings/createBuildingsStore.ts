@@ -1,4 +1,4 @@
-import { Store, defineStore } from "pinia";
+import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
 import { useGoldStore } from "../resources/gold.js";
