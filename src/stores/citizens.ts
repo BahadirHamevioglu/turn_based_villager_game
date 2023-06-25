@@ -2,24 +2,24 @@ import { watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
-import { useLevelStore } from "./status/level.js";
-const levelStore = useLevelStore();
-
 export const useCitizensStore = defineStore("citizensPopulation", () => {
   const citizensPopulation = useStorage("citizensPopulation", 1);
   const citizensPopulationMax = useStorage("citizensPopulationMax", 10);
 
-  function incrementCitizensPopulation(number) {
-    citizensPopulation.value += number;
+  function incrementCitizensPopulation(value: number) {
+    citizensPopulation.value += value;
   }
-  function decrementCitizensPopulation(number) {
-    citizensPopulation.value -= number;
+
+  function decrementCitizensPopulation(value: number) {
+    citizensPopulation.value -= value;
   }
-  function incrementCitizensPopulationMax(number) {
-    citizensPopulationMax.value += number;
+
+  function incrementCitizensPopulationMax(value: number) {
+    citizensPopulationMax.value += value;
   }
-  function decrementCitizensPopulationMax(number) {
-    citizensPopulation.value += number;
+
+  function decrementCitizensPopulationMax(value: number) {
+    citizensPopulation.value += value;
   }
 
   watchEffect(() => {

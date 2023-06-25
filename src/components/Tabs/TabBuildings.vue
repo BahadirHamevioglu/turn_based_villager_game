@@ -1,189 +1,81 @@
-<script setup>
-import { computed, watchEffect } from "vue";
+<script setup lang="ts">
 import TabBuildingsBox from "./TabBuildings-Box.vue";
+import { BuildingStore } from "../../stores/buildings/createBuildingsStore"
 
 import { useHouseBuildStore } from "../../stores/buildings/house";
-const houseBuildStore = useHouseBuildStore();
-
 import { useFarmBuildStore } from "../../stores/buildings/farm";
-const farmBuildStore = useFarmBuildStore();
-
 import { useDefaultMineBuildStore } from "../../stores/buildings/defaultMine";
-const defaultMineBuildStore = useDefaultMineBuildStore();
-
 import { useElectricFactoryBuildStore } from "../../stores/buildings/electricFactory";
-const ElectricFactoryBuildStore = useElectricFactoryBuildStore();
-
 import { useScienceCenterBuildStore } from "../../stores/buildings/scienceCenter";
-const scienceCenterBuildStore = useScienceCenterBuildStore();
-
 import { useAmusementCenterBuildStore } from "../../stores/buildings/amusementCenter";
-const amusementCenterBuildStore = useAmusementCenterBuildStore();
-
 import { useSchoolBuildStore } from "../../stores/buildings/school";
-const schoolBuildStore = useSchoolBuildStore();
-
 import { useGoldStore } from "../../stores/resources/gold";
+
+const houseBuildStore = useHouseBuildStore();
+const farmBuildStore = useFarmBuildStore();
+const defaultMineBuildStore = useDefaultMineBuildStore();
+const ElectricFactoryBuildStore = useElectricFactoryBuildStore();
+const scienceCenterBuildStore = useScienceCenterBuildStore();
+const amusementCenterBuildStore = useAmusementCenterBuildStore();
+const schoolBuildStore = useSchoolBuildStore();
 const goldStore = useGoldStore();
 
-const buildingsData = computed(() => {
-  const buildings = [
-    {
-      type: "house",
-      image: "/house.png",
-      buildingStore: houseBuildStore,
-      addCitizens: houseBuildStore.building.addCitizens,
-      effects: {
-        happiness: houseBuildStore.building.happinessEffect,
-        health: houseBuildStore.building.healthEffect,
-        farming: houseBuildStore.building.farmingEffect,
-        mining: houseBuildStore.building.miningEffect,
-        science: houseBuildStore.building.scienceEffect,
-        electric: houseBuildStore.building.electricEffect,
-      },
-    },
-    {
-      type: "field",
-      image: "/field.png",
-      buildingStore: farmBuildStore,
-      addCitizens: farmBuildStore.building.addCitizens,
-      effects: {
-        happiness: farmBuildStore.building.happinessEffect,
-        health: farmBuildStore.building.healthEffect,
-        farming: farmBuildStore.building.farmingEffect,
-        mining: farmBuildStore.building.miningEffect,
-        science: farmBuildStore.building.scienceEffect,
-        electric: farmBuildStore.building.electricEffect,
-      },
-    },
-    {
-      type: "mine",
-      image: "/coal-mine.png",
-      buildingStore: defaultMineBuildStore,
-      addCitizens: defaultMineBuildStore.building.addCitizens,
-      effects: {
-        happiness: defaultMineBuildStore.building.happinessEffect,
-        health: defaultMineBuildStore.building.healthEffect,
-        farming: defaultMineBuildStore.building.farmingEffect,
-        mining: defaultMineBuildStore.building.miningEffect,
-        science: defaultMineBuildStore.building.scienceEffect,
-        electric: defaultMineBuildStore.building.electricEffect,
-      },
-    },
-    {
-      type: "electricFactory",
-      image: "/electric-factory.png",
-      buildingStore: ElectricFactoryBuildStore,
-      addCitizens: ElectricFactoryBuildStore.building.addCitizens,
-      effects: {
-        happiness: ElectricFactoryBuildStore.building.happinessEffect,
-        health: ElectricFactoryBuildStore.building.healthEffect,
-        farming: ElectricFactoryBuildStore.building.farmingEffect,
-        mining: ElectricFactoryBuildStore.building.miningEffect,
-        science: ElectricFactoryBuildStore.building.scienceEffect,
-        electric: ElectricFactoryBuildStore.building.electricEffect,
-      },
-    },
-    {
-      type: "scienceCenter",
-      image: "/science-center.png",
-      buildingStore: scienceCenterBuildStore,
-      addCitizens: scienceCenterBuildStore.building.addCitizens,
-      effects: {
-        happiness: scienceCenterBuildStore.building.happinessEffect,
-        health: scienceCenterBuildStore.building.healthEffect,
-        farming: scienceCenterBuildStore.building.farmingEffect,
-        mining: scienceCenterBuildStore.building.miningEffect,
-        science: scienceCenterBuildStore.building.scienceEffect,
-        electric: scienceCenterBuildStore.building.electricEffect,
-      },
-    },
-    {
-      type: "amusementCenter",
-      image: "/amusement-center.png",
-      buildingStore: amusementCenterBuildStore,
-      addCitizens: amusementCenterBuildStore.building.addCitizens,
-      effects: {
-        happiness: amusementCenterBuildStore.building.happinessEffect,
-        health: amusementCenterBuildStore.building.healthEffect,
-        farming: amusementCenterBuildStore.building.farmingEffect,
-        mining: amusementCenterBuildStore.building.miningEffect,
-        science: amusementCenterBuildStore.building.scienceEffect,
-        electric: amusementCenterBuildStore.building.electricEffect,
-      },
-    },
-    {
-      type: "school",
-      image: "/school.png",
-      buildingStore: schoolBuildStore,
-      addCitizens: schoolBuildStore.building.addCitizens,
-      effects: {
-        happiness: schoolBuildStore.building.happinessEffect,
-        health: schoolBuildStore.building.healthEffect,
-        farming: schoolBuildStore.building.farmingEffect,
-        mining: schoolBuildStore.building.miningEffect,
-        science: schoolBuildStore.building.scienceEffect,
-        electric: schoolBuildStore.building.electricEffect,
-      },
-    },
-  ];
+const getCost = (store: BuildingStore) => -1 * store.building.cost;
 
-  return buildings.map((building) => {
-    const { image, buildingStore, addCitizens, effects } = building;
+const getEffects = (store: BuildingStore) => {
+  return [
+    {
+      label: "Cost",
+      value: getCost(store),
+    },
+    {
+      label: "New Citizens",
+      value: store.building.addCitizens,
+    },
+    {
+      label: "Happiness Effect",
+      value: store.building.happinessEffect,
+    },
+    {
+      label: "Health Effect",
+      value: store.building.healthEffect,
+    },
+    {
+      label: "Farming Effect",
+      value: store.building.farmingEffect,
+    },
+    {
+      label: "Mining Effect",
+      value: store.building.miningEffect,
+    },
+    {
+      label: "Science Effect",
+      value: store.building.scienceEffect,
+    },
+    {
+      label: "Electricity Effect",
+      value: store.building.electricEffect,
+    },
+  ]
+}
 
-    return {
-      image,
-      name: buildingStore.building.name,
-      disabled: goldStore.currentValue < buildingStore.building.cost,
-      click: () => {
-        buildingStore.buildNewBuilding();
-      },
-      buttonText: `Build for ${buildingStore.building.cost} gold`,
-      amountOwned: buildingStore.building.owned,
-      popoverTitle: buildingStore.building.name,
-      popoverContent: [
-        {
-          label: "Cost",
-          value: -1 * buildingStore.building.cost,
-        },
-        {
-          label: "New Citizens",
-          value: addCitizens,
-        },
-        {
-          label: "Happiness Effect",
-          value: effects.happiness,
-        },
-        {
-          label: "Health Effect",
-          value: effects.health,
-        },
-        {
-          label: "Farming Effect",
-          value: effects.farming,
-        },
-        {
-          label: "Mining Effect",
-          value: effects.mining,
-        },
-        {
-          label: "Science Effect",
-          value: effects.science,
-        },
-        {
-          label: "Electricity Effect",
-          value: effects.electric,
-        },
-      ],
-    };
-  });
-});
+const buildings = [
+  { type: 'house', imageKey: 'house', store: houseBuildStore },
+  { type: 'field', imageKey: 'field', store: farmBuildStore },
+  { type: 'mine', imageKey: 'coal-mine', store: defaultMineBuildStore },
+  { type: 'electricFactory', imageKey: 'electric-factory', store: ElectricFactoryBuildStore },
+  { type: 'scienceCenter', imageKey: 'science-center', store: scienceCenterBuildStore },
+  { type: 'amusementCenter', imageKey: 'amusement-center', store: amusementCenterBuildStore },
+  { type: 'school', imageKey: 'school', store: schoolBuildStore },
+]
 
-watchEffect(() => {
-  buildingsData.value.sort(
-    (a, b) => b.popoverContent[0].value - a.popoverContent[0].value
-  );
-});
+const buildingsData = buildings.map(({ imageKey, store }) => {
+  return {
+    image: `/${imageKey}.png`,
+    name: store.building.name,
+    store,
+  };
+}).sort((a, b) => getCost(b.store) - getCost(a.store));
 </script>
 
 <template>
@@ -193,12 +85,12 @@ watchEffect(() => {
       :key="building.name"
       :image="building.image"
       :name="building.name"
-      :disabled="building.disabled"
-      :click="building.click"
-      :buttonText="building.buttonText"
-      :amountOwned="building.amountOwned"
-      :popoverTitle="building.popoverTitle"
-      :popoverContent="building.popoverContent"
+      :disabled="goldStore.currentValue < building.store.building.cost"
+      :button-text="`Build for ${building.store.building.cost} gold`"
+      :amount-owned="building.store.building.owned"
+      :popover-title="building.name"
+      :popover-content="getEffects(building.store)"
+      @click="building.store.buildNewBuilding"
     />
   </div>
 </template>

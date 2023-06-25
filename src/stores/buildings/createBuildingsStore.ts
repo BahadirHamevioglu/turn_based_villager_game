@@ -1,5 +1,4 @@
-import { watchEffect, computed } from "vue";
-import { defineStore } from "pinia";
+import { Store, defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
 import { useGoldStore } from "../resources/gold.js";
@@ -25,36 +24,24 @@ const citizensStore = useCitizensStore();
 import { useElectricStore } from "../resources/electric.js";
 const electricStore = useElectricStore();
 
-export const createBuildingStore = (
-  storeName,
-  owned,
-  cost,
-  addCitizens,
-  happinessEffect,
-  healthEffect,
-  farmingEffect,
-  miningEffect,
-  scienceEffect,
-  electricEffect
-) => {
-  const building = useStorage(`building-${storeName}`, {
-    name: storeName,
-    owned: owned,
-    cost: cost,
-    addCitizens: addCitizens,
-    happinessEffect: happinessEffect,
-    healthEffect: healthEffect,
-    farmingEffect: farmingEffect,
-    miningEffect: miningEffect,
-    scienceEffect: scienceEffect,
-    electricEffect: electricEffect,
-  });
+type Props = {
+  name: string,
+  owned: number,
+  cost: number,
+  addCitizens: number,
+  happinessEffect: number,
+  healthEffect: number,
+  farmingEffect: number,
+  miningEffect: number,
+  scienceEffect: number,
+  electricEffect: number,
+}
+
+export const createBuildingStore = (props: Props) => {
+  const building = useStorage(`building-${props.name}`, props);
 
   function buildNewBuilding() {
-    if (
-      goldStore.currentValue >= building.value.cost ||
-      goldStore.currentValue === building.value.cost
-    ) {
+    if (goldStore.currentValue >= building.value.cost) {
       goldStore.decrementValue(building.value.cost);
       building.value.owned += 1;
       citizensStore.incrementCitizensPopulationMax(building.value.addCitizens);
@@ -92,8 +79,10 @@ export const createBuildingStore = (
     }
   }
 
-  return defineStore(`building-${storeName}`, () => ({
+  return defineStore(`building-${props.name}`, () => ({
     building,
     buildNewBuilding,
   }));
 };
+
+export type BuildingStore = ReturnType<ReturnType<typeof createBuildingStore>>

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "strict": true,
+    "module": "ESNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "jsx": "preserve",
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["./src/**/*", "./*.d.ts",],
+  "exclude": ["node_modules/**/*", "node_modules/*", "node_modules", "**/node_modules"]
+}

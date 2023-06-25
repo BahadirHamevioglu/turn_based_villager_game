@@ -1,10 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
 import { useStorage } from "@vueuse/core";
 
 import Tab_Main from "./Tab_Main.vue";
 import TabBuildings from "./TabBuildings.vue";
 import Resource_Happiness from "../Resources/Resource_Happiness.vue";
+
 const tabItems = [
   {
     text: "Main",
@@ -29,16 +30,14 @@ const tabItems = [
 
 const activeTab = useStorage("activeTab", tabItems[0].text);
 
-const setActiveTab = (index) => {
+const setActiveTab = (index: number) => {
   activeTab.value = tabItems[index].text;
 };
 
-const activeTabComponent = computed(() => {
-  const currentTab = tabItems.find(
+const activeTabItem = computed(() => tabItems.find(
     (item) => item.text === activeTab.value
-  )?.component;
-  return currentTab;
-});
+  ));
+
 </script>
 
 <template>
@@ -55,17 +54,17 @@ const activeTabComponent = computed(() => {
     </div>
 
     <div class="tab-content">
-      <div class="tab-content-title" v-if="activeTab && activeTabComponent">
+      <div class="tab-content-title" v-if="activeTab && activeTabItem?.component">
         {{ activeTab }}
       </div>
       <keep-alive>
         <component
-          :is="activeTabComponent"
-          v-if="activeTabComponent"
-          :key="activeTabComponent"
+          :is="activeTabItem.component"
+          v-if="activeTabItem?.component"
+          :key="activeTabItem.text"
         />
       </keep-alive>
-      <div class="" v-if="!activeTabComponent">no data!</div>
+      <div class="" v-if="!activeTabItem?.component">no data!</div>
     </div>
   </div>
 </template>

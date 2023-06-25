@@ -16,6 +16,7 @@ export const useDayStore = defineStore("dayCycle", () => {
     disasterCycle.incrementValue(1);
     goldStore.incrementValue(3);
   }
+  
   function decrementDay(number) {
     currentDay.value -= number;
   }

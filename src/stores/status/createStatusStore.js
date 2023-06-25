@@ -1,14 +1,14 @@
-import { ref, watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
 export const createStatusStore = (
   storeName,
   startingValue = 0,
-  maxValueFunction
+  maxValueFunction,
+  noMaxValue = false
 ) => {
   const currentValue = useStorage(`current${storeName}`, startingValue);
-  const maxValue = useStorage(`max${storeName}`, maxValueFunction);
+  const maxValue = useStorage(`max${storeName}`, noMaxValue ? Infinity : maxValueFunction);
 
   function incrementValue(number) {
     currentValue.value += number;
@@ -25,10 +25,6 @@ export const createStatusStore = (
   function decrementMaxValue(number) {
     maxValue.value -= number;
   }
-
-  watchEffect(() => {
-    maxValue.value;
-  });
 
   return defineStore(`status-${storeName}`, () => ({
     currentValue,

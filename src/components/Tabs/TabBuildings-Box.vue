@@ -1,6 +1,13 @@
-<script setup>
-import { defineProps, watchEffect } from "vue";
+<script setup lang="ts"> 
+import { PropType, computed, watchEffect } from "vue";
 import GBButton from "../Button.vue";
+
+type PopoverContentItem = {
+  label: string,
+  value: number
+}
+
+type PopoverContent = PopoverContentItem[]
 
 const props = defineProps({
   image: {
@@ -18,11 +25,6 @@ const props = defineProps({
     required: true,
     default: false,
   },
-  click: {
-    type: Function,
-    required: true,
-    default: () => {},
-  },
   buttonText: {
     type: String,
     required: true,
@@ -33,57 +35,61 @@ const props = defineProps({
     required: true,
     default: 0,
   },
-
   popoverTitle: {
     type: String,
     required: false,
     default: "NO DATA!!!",
   },
   popoverContent: {
-    type: Array,
+    type: Array as PropType<PopoverContent>,
     required: false,
     default: () => [{ label: "NO DATA!!!", value: 0 }],
   },
 });
 
-watchEffect(() => {
-  props.popoverContent.sort((a, b) => b.value - a.value);
-});
+const emit = defineEmits(["click"]);
+
+const popoverContent = computed(() => props.popoverContent.slice().sort((a, b) => b.value - a.value))
+
+const getPopoverContentItemColor = (item: PopoverContentItem) => {
+  if (item.value > 0) return 'rgb(52, 211, 153)';
+  if (item.value < 0) return 'rgb(248, 113, 113)';
+
+  return '#000';
+}
 </script>
 
 <template>
   <div class="buildings-tab-item">
     <div class="buildings-tab-item-image">
-      <img :src="props.image" alt="" />
+      <img :src="image" alt="" />
     </div>
     <div class="buildings-tab-item-content">
-      <div class="buildings-tab-item-title">{{ props.name }}</div>
+      <div class="buildings-tab-item-title">{{ name }}</div>
       <GBButton
         size="md"
-        :disabled="props.disabled"
+        :disabled="disabled"
         type="primary"
-        @click="props.click"
-        >{{ props.buttonText }}</GBButton
+        @click="emit('click')"
+        >{{ buttonText }}</GBButton
       >
-      <div class="amount-owned">{{ props.amountOwned }}</div>
+      <div class="amount-owned">{{ amountOwned }}</div>
       <div class="buildings-tab-item-popover">
         ?
 
         <div class="popover-content">
-          <div class="popover-content-title">{{ props.popoverTitle }}</div>
+          <div class="popover-content-title">{{ popoverTitle }}</div>
           <div class="popover-content-items">
             <div
               class="popover-content-item"
-              v-for="item in props.popoverContent"
+              v-for="item in popoverContent"
             >
               <div class="popover-content-item-label">{{ item.label }}</div>
               <div
                 class="popover-content-item-value"
-                :style="[
-                  item.value === 0 ? { color: '#000 !important' } : {},
-                  item.value > 0 ? { color: 'rgb(52, 211, 153)' } : {},
-                  item.value < 0 ? { color: 'rgb(248, 113, 113)' } : {},
-                ]"
+                :style="{
+                  color: getPopoverContentItemColor(item)
+                }"
               >
                 {{ item.value > 0 ? "+" : "" }}{{ item.value }}
               </div>
@@ -107,15 +113,20 @@ watchEffect(() => {
   transition: all 0.2s ease-in-out;
   position: relative;
   text-align: center;
+
   &-image {
     height: 225px;
     width: 225px;
     margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+
     img {
+      object-fit: fill;
       height: 100%;
       width: 100%;
-      object-fit: fill;
-    }
+      filter: drop-shadow(0 20px 30px rgba(#000, .35));
+        }
   }
 
   &-title {

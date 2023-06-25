@@ -1,11 +1,18 @@
-<script setup>
-const props = defineProps(["icon", "color", "value", "title"]);
+<script setup lang="ts">
+interface Props {
+  icon: string[];
+  color: string;
+  value: number;
+  title: string;
+}
+
+const props = defineProps<Props>();
 </script>
 
 <template>
   <div class="tabs_main-item">
     <div class="tabs_main-item_icon">
-      <font-awesome-icon :icon="icon" :style="{ color: color }" />
+      <font-awesome-icon :icon="icon" :style="{ color }" />
     </div>
     <div class="tabs_main-item_title">{{ title }}</div>
     <div class="tabs_main-item_value">{{ value }}</div>
