@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TabBuildingsBox from "./TabBuildings-Box.vue";
+import TabBuildingsBox from "./Tab-Buildings-Box.vue";
 import { BuildingStore } from "../../stores/buildings/createBuildingsStore";
 
 import { useHouseBuildStore } from "../../stores/buildings/house";

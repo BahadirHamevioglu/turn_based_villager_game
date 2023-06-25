@@ -3,7 +3,7 @@ const props = defineProps({
   size: {
     type: String,
     required: true,
-    default: "md" || "lg" || "sm",
+    default: "md",
   },
   type: {
     type: String,
@@ -46,7 +46,7 @@ const props = defineProps({
   border: none;
   color: #fff;
   transition: all 0.2s ease-in-out;
-
+  z-index: 3;
   &-md {
     padding: 0.75rem 1.5rem;
   }

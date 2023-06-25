@@ -39,12 +39,6 @@ watchEffect(() => {
         To the game over: {{ alarmCycle.currentValue }}/{{ alarmsItem.length }}
       </div>
     </div>
-    <!-- <button @click="alarmCycle.incrementValue(1)" style="margin-right: 1rem">
-      increment alarm level
-    </button>
-    <button @click="alarmCycle.incrementMaxValue(1)" style="margin-right: 1rem">
-      increment max level
-    </button> -->
   </div>
 </template>
 

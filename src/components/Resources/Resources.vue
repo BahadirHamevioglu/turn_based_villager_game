@@ -1,34 +1,22 @@
-<script>
-import Resource_Happiness from "./Resource_Happiness.vue";
-import Resource_Health from "./Resource_Health.vue";
-import Resources_Farming from "./Resource_Farming.vue";
-import Resource_Mining from "./Resource_Mining.vue";
-import Resource_Science from "./Resource_Science.vue";
-import Resource_Electric from "./Resource_Electric.vue";
-import Resource_Gold from "./Resource_Gold.vue";
-
-export default {
-  components: {
-    Resource_Happiness,
-    Resource_Health,
-    Resources_Farming,
-    Resource_Mining,
-    Resource_Science,
-    Resource_Electric,
-    Resource_Gold,
-  },
-};
+<script setup>
+import ResourceHappiness from "./Resource-Happiness.vue";
+import ResourceHealth from "./Resource-Health.vue";
+import ResourcesFarming from "./Resource-Farming.vue";
+import ResourceMining from "./Resource-Mining.vue";
+import ResourceScience from "./Resource-Science.vue";
+import ResourceElectric from "./Resource-Electric.vue";
+import ResourceGold from "./Resource-Gold.vue";
 </script>
 
 <template>
   <div class="resources">
-    <Resource_Happiness />
-    <Resource_Health />
-    <Resources_Farming />
-    <Resource_Mining />
-    <Resource_Science />
-    <Resource_Electric />
-    <Resource_Gold />
+    <ResourceHappiness />
+    <ResourceHealth />
+    <ResourcesFarming />
+    <ResourceMining />
+    <ResourceScience />
+    <ResourceElectric />
+    <ResourceGold />
   </div>
 </template>
 

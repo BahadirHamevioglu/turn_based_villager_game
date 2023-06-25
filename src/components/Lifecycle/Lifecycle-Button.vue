@@ -30,5 +30,6 @@ const dayCycle = useDayStore();
   position: fixed;
   bottom: 15px;
   right: 15px;
+  z-index: 3;
 }
 </style>

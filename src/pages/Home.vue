@@ -4,7 +4,7 @@ import GameStatus from "../components/Status/GameStatus.vue";
 import TownHall from "../components/TownHall/TownHall.vue";
 import Resources from "../components/Resources/Resources.vue";
 import Tabs from "../components/Tabs/Tabs.vue";
-import Lifecycle_Button from "../components/Lifecycle/Lifecycle_Button.vue";
+import LifecycleButton from "../components/Lifecycle/Lifecycle-Button.vue";
 </script>
 
 <template>
@@ -18,7 +18,7 @@ import Lifecycle_Button from "../components/Lifecycle/Lifecycle_Button.vue";
       <div class="gameboard-grid-bottom">
         <Tabs />
       </div>
-      <Lifecycle_Button />
+      <LifecycleButton />
     </div>
   </main>
 </template>

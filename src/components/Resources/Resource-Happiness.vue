@@ -1,5 +1,5 @@
 <script setup>
-import Resources_Item from "./Resources_Item.vue";
+import ResourcesItem from "./Resources-Item.vue";
 
 import { useHappinessStore } from "../../stores/resources/happiness";
 const happiness = useHappinessStore();
@@ -14,7 +14,7 @@ const dropdownContent = [
 </script>
 
 <template>
-  <Resources_Item
+  <ResourcesItem
     :icon="['fas', 'face-smile']"
     :value="happiness.currentValue"
     :color="happiness.currentValue < 0 ? 'rgb(239, 68, 68)' : '#65a30d'"
@@ -41,7 +41,7 @@ const dropdownContent = [
         </div>
       </div>
     </div>
-  </Resources_Item>
+  </ResourcesItem>
 </template>
 
 <style scoped lang="scss">
