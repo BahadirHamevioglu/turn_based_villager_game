@@ -161,6 +161,7 @@ const getPopoverContentItemColor = (item: PopoverContentItem) => {
     position: absolute;
     top: 15px;
     left: 15px;
+    z-index: 2;
 
     background: rgb(243, 244, 246);
     color: rgb(107, 114, 128);
