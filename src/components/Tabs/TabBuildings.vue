@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TabBuildingsBox from "./TabBuildings-Box.vue";
-import { BuildingStore } from "../../stores/buildings/createBuildingsStore"
+import { BuildingStore } from "../../stores/buildings/createBuildingsStore";
 
 import { useHouseBuildStore } from "../../stores/buildings/house";
 import { useFarmBuildStore } from "../../stores/buildings/farm";
@@ -56,26 +56,40 @@ const getEffects = (store: BuildingStore) => {
       label: "Electricity Effect",
       value: store.building.electricEffect,
     },
-  ]
-}
+  ].filter(({ value }) => value !== 0);
+};
 
 const buildings = [
-  { type: 'house', imageKey: 'house', store: houseBuildStore },
-  { type: 'field', imageKey: 'field', store: farmBuildStore },
-  { type: 'mine', imageKey: 'coal-mine', store: defaultMineBuildStore },
-  { type: 'electricFactory', imageKey: 'electric-factory', store: ElectricFactoryBuildStore },
-  { type: 'scienceCenter', imageKey: 'science-center', store: scienceCenterBuildStore },
-  { type: 'amusementCenter', imageKey: 'amusement-center', store: amusementCenterBuildStore },
-  { type: 'school', imageKey: 'school', store: schoolBuildStore },
-]
+  { type: "house", imageKey: "house", store: houseBuildStore },
+  { type: "field", imageKey: "field", store: farmBuildStore },
+  { type: "mine", imageKey: "coal-mine", store: defaultMineBuildStore },
+  {
+    type: "electricFactory",
+    imageKey: "electric-factory",
+    store: ElectricFactoryBuildStore,
+  },
+  {
+    type: "scienceCenter",
+    imageKey: "science-center",
+    store: scienceCenterBuildStore,
+  },
+  {
+    type: "amusementCenter",
+    imageKey: "amusement-center",
+    store: amusementCenterBuildStore,
+  },
+  { type: "school", imageKey: "school", store: schoolBuildStore },
+];
 
-const buildingsData = buildings.map(({ imageKey, store }) => {
-  return {
-    image: `/${imageKey}.png`,
-    name: store.building.name,
-    store,
-  };
-}).sort((a, b) => getCost(b.store) - getCost(a.store));
+const buildingsData = buildings
+  .map(({ imageKey, store }) => {
+    return {
+      image: `/${imageKey}.png`,
+      name: store.building.name,
+      store,
+    };
+  })
+  .sort((a, b) => getCost(b.store) - getCost(a.store));
 </script>
 
 <template>
