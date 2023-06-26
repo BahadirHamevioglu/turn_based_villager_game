@@ -1,4 +1,4 @@
-import { watchEffect } from "vue";
+import { computed, watchEffect, watch } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
@@ -8,6 +8,18 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
 
   function incrementCitizensPopulation(value: number) {
     citizensPopulation.value += value;
+
+    if (citizensPopulation.value >= citizensPopulationMax.value) {
+      citizensPopulation.value = citizensPopulationMax.value;
+    }
+  }
+
+  function incrementCitizensPopulationRandom(value: number) {
+    citizensPopulation.value += Math.floor(Math.random() * value);
+
+    if (citizensPopulation.value >= citizensPopulationMax.value) {
+      citizensPopulation.value = citizensPopulationMax.value;
+    }
   }
 
   function decrementCitizensPopulation(value: number) {
@@ -23,7 +35,7 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
   }
 
   watchEffect(() => {
-    if (citizensPopulation.value > citizensPopulationMax.value) {
+    if (citizensPopulation.value >= citizensPopulationMax.value) {
       citizensPopulation.value = citizensPopulationMax.value;
     }
   });
@@ -32,6 +44,7 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
     citizensPopulation,
     citizensPopulationMax,
     incrementCitizensPopulation,
+    incrementCitizensPopulationRandom,
     decrementCitizensPopulation,
     incrementCitizensPopulationMax,
     decrementCitizensPopulationMax,

@@ -1,14 +1,14 @@
 import { createBuildingStore } from "./createBuildingsStore";
 
-export const useSchoolBuildStore = createBuildingStore({
-  name: "School",
+export const usePubBuildStore = createBuildingStore({
+  name: "Pub",
   owned: 0,
-  cost: 15,
+  cost: 20,
   addCitizens: 0,
-  happinessEffect: 2,
-  healthEffect: 1,
+  happinessEffect: 3,
+  healthEffect: -1,
   farmingEffect: 0,
   miningEffect: 0,
-  scienceEffect: 3,
+  scienceEffect: 0,
   electricEffect: -1,
 });

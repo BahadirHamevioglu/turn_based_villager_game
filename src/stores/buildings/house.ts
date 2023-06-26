@@ -1,4 +1,4 @@
-import { createBuildingStore } from "./createBuildingsStore.js";
+import { createBuildingStore } from "./createBuildingsStore";
 
 export const useHouseBuildStore = createBuildingStore({
   name: "House",
@@ -10,5 +10,5 @@ export const useHouseBuildStore = createBuildingStore({
   farmingEffect: 0,
   miningEffect: 0,
   scienceEffect: 0,
-  electricEffect: 0
+  electricEffect: 0,
 });

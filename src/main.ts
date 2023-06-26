@@ -41,6 +41,7 @@ import {
   faCircleQuestion,
   faTriangleExclamation,
   faBolt,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 // ADD ICONS TO LIBRARY
@@ -57,7 +58,8 @@ library.add(
   faUserGroup,
   faCircleQuestion,
   faTriangleExclamation,
-  faBolt
+  faBolt,
+  faChevronDown
 );
 
 // CREATE PINIA

@@ -4,17 +4,25 @@ import { useStorage } from "@vueuse/core";
 
 import { useAlarmStore } from "../status/alarms.js";
 
-export const createResourceStore = (storeName, startingValue = 10) => {
-  const alarmCycle = useAlarmStore();
-  const isAlarmTriggered = useStorage(`isAlarmTriggeredFor${storeName}`, false);
-  const currentValue = useStorage(`current${storeName}`, startingValue);
+type props = {
+  name: string;
+  startingValue: number;
+};
 
-  function incrementValue(number) {
-    currentValue.value += number;
+export const createResourceStore = (props: props) => {
+  const alarmCycle = useAlarmStore();
+  const isAlarmTriggered = useStorage(
+    `isAlarmTriggeredFor${props.name}`,
+    false
+  );
+  const currentValue = useStorage(`current${props.name}`, props.startingValue);
+
+  function incrementValue(value: number) {
+    currentValue.value += value;
   }
 
-  function decrementValue(number) {
-    currentValue.value -= number;
+  function decrementValue(value: number) {
+    currentValue.value -= value;
   }
 
   watchEffect(() => {
@@ -29,7 +37,7 @@ export const createResourceStore = (storeName, startingValue = 10) => {
     }
   });
 
-  return defineStore(`resources-${storeName}`, () => ({
+  return defineStore(`resources-${props.name}`, () => ({
     currentValue,
     isAlarmTriggered,
     incrementValue,

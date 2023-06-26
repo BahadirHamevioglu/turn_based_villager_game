@@ -2,27 +2,29 @@
 import { computed } from "vue";
 import { useStorage } from "@vueuse/core";
 
-import TabMain from "./Tab-Main.vue";
 import TabBuildings from "./Tab-Buildings.vue";
+import TabSlaveBazaar from "./Tab-Slave-Bazaar.vue";
+import TabHowToPlay from "./Tab-How-To-Play.vue";
 
 const tabItems = [
   {
-    text: "Main",
-    id: 1,
-    component: TabMain,
-  },
-  {
-    text: "Jobs",
-    id: 2,
-  },
-  {
     text: "Buildings",
-    id: 2,
+    id: 0,
     component: TabBuildings,
+  },
+  {
+    text: "Slave Baazar",
+    id: 1,
+    component: TabSlaveBazaar,
+  },
+  {
+    text: "Graces",
+    id: 2,
   },
   {
     text: "How To Play",
     id: 3,
+    component: TabHowToPlay,
   },
 ];
 

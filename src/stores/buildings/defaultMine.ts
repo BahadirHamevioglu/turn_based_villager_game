@@ -1,4 +1,4 @@
-import { createBuildingStore } from "./createBuildingsStore.js";
+import { createBuildingStore } from "./createBuildingsStore";
 
 export const useDefaultMineBuildStore = createBuildingStore({
   name: "Default Mine",
@@ -10,5 +10,5 @@ export const useDefaultMineBuildStore = createBuildingStore({
   farmingEffect: 0,
   miningEffect: 3,
   scienceEffect: 0,
-  electricEffect: 0
+  electricEffect: 0,
 });

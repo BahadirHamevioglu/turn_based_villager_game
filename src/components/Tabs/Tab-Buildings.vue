@@ -4,19 +4,32 @@ import { BuildingStore } from "../../stores/buildings/createBuildingsStore";
 
 import { useHouseBuildStore } from "../../stores/buildings/house";
 import { useFarmBuildStore } from "../../stores/buildings/farm";
+import { useBazaarBuildStore } from "../../stores/buildings/bazaar";
 import { useDefaultMineBuildStore } from "../../stores/buildings/defaultMine";
+import { useAdvancedMineBuildStore } from "../../stores/buildings/advancedMine";
 import { useElectricFactoryBuildStore } from "../../stores/buildings/electricFactory";
+import { useElectricGeneratorBuildStore } from "../../stores/buildings/electricGenerator";
+import { useEnvironmentallyFriendlyFactoryBuildStore } from "../../stores/buildings/environmentallyFriendlyFactory";
 import { useScienceCenterBuildStore } from "../../stores/buildings/scienceCenter";
 import { useAmusementCenterBuildStore } from "../../stores/buildings/amusementCenter";
+import { usePubBuildStore } from "../../stores/buildings/pub";
+import { useTavernBuildStore } from "../../stores/buildings/tavern";
 import { useSchoolBuildStore } from "../../stores/buildings/school";
 import { useGoldStore } from "../../stores/resources/gold";
 
 const houseBuildStore = useHouseBuildStore();
 const farmBuildStore = useFarmBuildStore();
+const bazaarBuildStore = useBazaarBuildStore();
 const defaultMineBuildStore = useDefaultMineBuildStore();
+const advancedMineBuildStore = useAdvancedMineBuildStore();
 const ElectricFactoryBuildStore = useElectricFactoryBuildStore();
+const ElectricGeneratorBuildStore = useElectricGeneratorBuildStore();
+const EnvironmentallyFriendlyFactoryBuildStore =
+  useEnvironmentallyFriendlyFactoryBuildStore();
 const scienceCenterBuildStore = useScienceCenterBuildStore();
 const amusementCenterBuildStore = useAmusementCenterBuildStore();
+const pubBuildStore = usePubBuildStore();
+const tavernBuildStore = useTavernBuildStore();
 const schoolBuildStore = useSchoolBuildStore();
 const goldStore = useGoldStore();
 
@@ -29,7 +42,7 @@ const getEffects = (store: BuildingStore) => {
       value: getCost(store),
     },
     {
-      label: "New Citizens",
+      label: "Citizens Capacity",
       value: store.building.addCitizens,
     },
     {
@@ -62,11 +75,27 @@ const getEffects = (store: BuildingStore) => {
 const buildings = [
   { type: "house", imageKey: "house", store: houseBuildStore },
   { type: "field", imageKey: "field", store: farmBuildStore },
+  { type: "bazaar", imageKey: "bazaar", store: bazaarBuildStore },
   { type: "mine", imageKey: "coal-mine", store: defaultMineBuildStore },
+  {
+    type: "advancedMine",
+    imageKey: "advanced-mine",
+    store: advancedMineBuildStore,
+  },
   {
     type: "electricFactory",
     imageKey: "electric-factory",
     store: ElectricFactoryBuildStore,
+  },
+  {
+    type: "electricGenerator",
+    imageKey: "electric-generator",
+    store: ElectricGeneratorBuildStore,
+  },
+  {
+    type: "environmentallyFriendlyFactory",
+    imageKey: "environmentally-friendly-factory",
+    store: EnvironmentallyFriendlyFactoryBuildStore,
   },
   {
     type: "scienceCenter",
@@ -79,6 +108,8 @@ const buildings = [
     store: amusementCenterBuildStore,
   },
   { type: "school", imageKey: "school", store: schoolBuildStore },
+  { type: "pub", imageKey: "pub", store: pubBuildStore },
+  { type: "tavern", imageKey: "tavern", store: tavernBuildStore },
 ];
 
 const buildingsData = buildings

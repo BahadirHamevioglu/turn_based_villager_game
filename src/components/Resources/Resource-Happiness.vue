@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from "vue";
 import ResourcesItem from "./Resources-Item.vue";
 
 import { useHappinessStore } from "../../stores/resources/happiness";
@@ -8,7 +9,7 @@ const dropdownContent = [
   {
     id: 0,
     text: "Happiness",
-    value: happiness.currentValue,
+    value: computed(() => happiness.currentValue),
   },
 ];
 </script>
