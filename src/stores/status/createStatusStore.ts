@@ -4,7 +4,7 @@ import { useStorage } from "@vueuse/core";
 type props = {
   storeName: string;
   startingValue: number;
-  maxValue: number | null;
+  maxValue: number;
   noMaxValue: boolean;
 };
 
