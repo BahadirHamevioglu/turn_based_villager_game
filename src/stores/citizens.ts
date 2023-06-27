@@ -1,4 +1,4 @@
-import { watchEffect } from "vue";
+import { watchEffect, computed } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
@@ -8,7 +8,7 @@ const alarmCycle = useAlarmStore();
 const POPULATION_INCREASE_PROBABILITY = 10;
 
 export const useCitizensStore = defineStore("citizensPopulation", () => {
-  const citizensPopulation = useStorage("citizensPopulation", 1);
+  const citizensPopulation = useStorage("citizensPopulation", 1 || 0);
   const citizensPopulationMax = useStorage("citizensPopulationMax", 10);
 
   function incrementCitizensPopulation(value: number) {
@@ -46,9 +46,16 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
       citizensPopulation.value = citizensPopulationMax.value;
     }
 
+    computed(() => {
+      if (citizensPopulation.value <= 0) {
+        citizensPopulation.value = 0;
+        alarmCycle.incrementValue(10);
+      }
+    });
+
     if (citizensPopulation.value <= 0) {
       citizensPopulation.value = 0;
-      alarmCycle.incrementValue(10);
+      alarmCycle.incrementValue(alarmCycle.maxValue + 1);
     }
   });
 
