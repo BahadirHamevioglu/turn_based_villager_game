@@ -8,7 +8,7 @@ const alarmCycle = useAlarmStore();
 const POPULATION_INCREASE_PROBABILITY = 10;
 
 export const useCitizensStore = defineStore("citizensPopulation", () => {
-  const citizensPopulation = useStorage("citizensPopulation", 1 || 0);
+  const citizensPopulation = useStorage("citizensPopulation", 1);
   const citizensPopulationMax = useStorage("citizensPopulationMax", 10);
 
   function incrementCitizensPopulation(value: number) {
@@ -54,7 +54,7 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
     });
 
     if (citizensPopulation.value <= 0) {
-      citizensPopulation.value = 0;
+      citizensPopulation.value = 1;
       alarmCycle.incrementValue(alarmCycle.maxValue + 1);
     }
   });
