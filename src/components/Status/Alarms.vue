@@ -1,6 +1,7 @@
 <script setup>
-import { watchEffect, computed } from "vue";
+import { watchEffect, computed, ref } from "vue";
 import { useAlarmStore } from "../../stores/status/alarms";
+import GameOverModal from "../Modals/Modal-Game-Over.vue";
 
 const alarmCycle = useAlarmStore();
 const alarmsItem = computed(() => {
@@ -9,6 +10,8 @@ const alarmsItem = computed(() => {
   }));
 });
 
+const showModal = ref(false);
+
 watchEffect(() => {
   alarmsItem.value.forEach((item, i) => {
     item.color = i < alarmCycle.currentValue ? "rgb(239, 68, 68)" : "#f3f4f6";
@@ -16,7 +19,9 @@ watchEffect(() => {
 
   if (alarmCycle.currentValue >= alarmCycle.maxValue) {
     alarmCycle.currentValue = 0;
+    showModal.value = true;
     console.log("game over");
+
     alarmsItem.value.forEach((item) => {
       item.color = "#f3f4f6";
     });
@@ -40,6 +45,8 @@ watchEffect(() => {
       </div>
     </div>
   </div>
+  <button @click="alarmCycle.incrementValue(1)">+</button>
+  <GameOverModal :show="showModal" @close="showModal = !showModal" />
 </template>
 
 <style lang="scss" scoped>

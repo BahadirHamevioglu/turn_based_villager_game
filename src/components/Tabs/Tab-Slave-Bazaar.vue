@@ -32,8 +32,6 @@ function sellSlave(value = sellQuantity) {
     console.log("Not enough citizens");
   }
 }
-
-console.log(cost.value);
 </script>
 
 <template>
