@@ -1,6 +1,11 @@
-import { computed, watchEffect, watch } from "vue";
+import { watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
+
+import { useAlarmStore } from "./status/alarms";
+const alarmCycle = useAlarmStore();
+
+const POPULATION_INCREASE_PROBABILITY = 10;
 
 export const useCitizensStore = defineStore("citizensPopulation", () => {
   const citizensPopulation = useStorage("citizensPopulation", 1);
@@ -15,7 +20,9 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
   }
 
   function incrementCitizensPopulationRandom(value: number) {
-    citizensPopulation.value += Math.floor(Math.random() * value);
+    if (Math.random() < POPULATION_INCREASE_PROBABILITY / 100) {
+      citizensPopulation.value += value;
+    }
 
     if (citizensPopulation.value >= citizensPopulationMax.value) {
       citizensPopulation.value = citizensPopulationMax.value;
@@ -37,6 +44,11 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
   watchEffect(() => {
     if (citizensPopulation.value >= citizensPopulationMax.value) {
       citizensPopulation.value = citizensPopulationMax.value;
+    }
+
+    if (citizensPopulation.value <= 0) {
+      citizensPopulation.value = 0;
+      alarmCycle.incrementValue(999);
     }
   });
 
