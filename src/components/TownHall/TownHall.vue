@@ -2,10 +2,12 @@
 import GBButton from "../Button.vue";
 
 import { useLevelStore } from "../../stores/status/level";
-const levelStore = useLevelStore();
-
 import { useCitizensStore } from "../../stores/citizens";
+import { useGoldStore } from "../../stores/resources/gold";
+
+const levelStore = useLevelStore();
 const citizensStore = useCitizensStore();
+const goldStore = useGoldStore();
 </script>
 
 <template>
@@ -62,6 +64,10 @@ const citizensStore = useCitizensStore();
               citizensStore.citizensPopulationMax
             }}</span
           >
+        </div>
+        <div class="gold-resource">
+          <font-awesome-icon :icon="['fas', 'coins']" />
+          <span class="gold-resource-value">{{ goldStore.currentValue }}</span>
         </div>
       </div>
     </div>
@@ -129,6 +135,7 @@ const citizensStore = useCitizensStore();
       display: flex;
       flex-direction: row;
       align-items: center;
+      gap: 1rem;
 
       .town-citizens {
         display: flex;
@@ -139,6 +146,18 @@ const citizensStore = useCitizensStore();
           width: 1.2rem;
           height: 1.2rem;
           fill: rgba(156, 163, 175, 1);
+        }
+      }
+
+      .gold-resource {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+        color: #f6b62d;
+        svg {
+          width: 1.2rem;
+          height: 1.2rem;
         }
       }
     }

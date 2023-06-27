@@ -4,6 +4,7 @@ import { useStorage } from "@vueuse/core";
 
 import TabBuildings from "./Tab-Buildings.vue";
 import TabSlaveBazaar from "./Tab-Slave-Bazaar.vue";
+import TabPotions from "./Tab-Potions.vue";
 import TabHowToPlay from "./Tab-How-To-Play.vue";
 
 const tabItems = [
@@ -18,8 +19,9 @@ const tabItems = [
     component: TabSlaveBazaar,
   },
   {
-    text: "Graces",
+    text: "Potions",
     id: 2,
+    component: TabPotions,
   },
   {
     text: "How To Play",

@@ -113,7 +113,7 @@ const props = defineProps({
     cursor: not-allowed;
 
     &:hover {
-      background-color: rgb(209, 213, 219);
+      background-color: rgb(209, 213, 219) !important;
     }
 
     &:active {

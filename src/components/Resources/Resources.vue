@@ -5,7 +5,6 @@ import ResourcesFarming from "./Resource-Farming.vue";
 import ResourceMining from "./Resource-Mining.vue";
 import ResourceScience from "./Resource-Science.vue";
 import ResourceElectric from "./Resource-Electric.vue";
-import ResourceGold from "./Resource-Gold.vue";
 </script>
 
 <template>
@@ -16,7 +15,6 @@ import ResourceGold from "./Resource-Gold.vue";
     <ResourceMining />
     <ResourceScience />
     <ResourceElectric />
-    <ResourceGold />
   </div>
 </template>
 

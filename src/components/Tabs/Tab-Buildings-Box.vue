@@ -1,13 +1,13 @@
-<script setup lang="ts"> 
-import { PropType, computed, watchEffect } from "vue";
+<script setup lang="ts">
+import { PropType, computed } from "vue";
 import GBButton from "../Button.vue";
 
 type PopoverContentItem = {
-  label: string,
-  value: number
-}
+  label: string;
+  value: number;
+};
 
-type PopoverContent = PopoverContentItem[]
+type PopoverContent = PopoverContentItem[];
 
 const props = defineProps({
   image: {
@@ -49,14 +49,16 @@ const props = defineProps({
 
 const emit = defineEmits(["click"]);
 
-const popoverContent = computed(() => props.popoverContent.slice().sort((a, b) => b.value - a.value))
+const popoverContent = computed(() =>
+  props.popoverContent.slice().sort((a, b) => b.value - a.value)
+);
 
 const getPopoverContentItemColor = (item: PopoverContentItem) => {
-  if (item.value > 0) return 'rgb(52, 211, 153)';
-  if (item.value < 0) return 'rgb(248, 113, 113)';
+  if (item.value > 0) return "rgb(52, 211, 153)";
+  if (item.value < 0) return "rgb(248, 113, 113)";
 
-  return '#000';
-}
+  return "#000";
+};
 </script>
 
 <template>
@@ -80,15 +82,12 @@ const getPopoverContentItemColor = (item: PopoverContentItem) => {
         <div class="popover-content">
           <div class="popover-content-title">{{ popoverTitle }}</div>
           <div class="popover-content-items">
-            <div
-              class="popover-content-item"
-              v-for="item in popoverContent"
-            >
+            <div class="popover-content-item" v-for="item in popoverContent">
               <div class="popover-content-item-label">{{ item.label }}</div>
               <div
                 class="popover-content-item-value"
                 :style="{
-                  color: getPopoverContentItemColor(item)
+                  color: getPopoverContentItemColor(item),
                 }"
               >
                 {{ item.value > 0 ? "+" : "" }}{{ item.value }}
@@ -125,8 +124,8 @@ const getPopoverContentItemColor = (item: PopoverContentItem) => {
       object-fit: fill;
       height: 100%;
       width: 100%;
-      filter: drop-shadow(0 20px 30px rgba(#000, .35));
-        }
+      filter: drop-shadow(0 20px 30px rgba(#000, 0.35));
+    }
   }
 
   &-title {
