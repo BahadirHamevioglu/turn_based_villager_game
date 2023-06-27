@@ -12,6 +12,18 @@ const alarmsItem = computed(() => {
 
 const showModal = ref(false);
 
+const closeModal = () => {
+  localStorage.clear();
+  window.location.reload();
+};
+
+function gameOver() {
+  showModal.value = true;
+  if (!showModal.value) {
+    closeModal();
+  }
+}
+
 watchEffect(() => {
   alarmsItem.value.forEach((item, i) => {
     item.color = i < alarmCycle.currentValue ? "rgb(239, 68, 68)" : "#f3f4f6";
@@ -19,9 +31,7 @@ watchEffect(() => {
 
   if (alarmCycle.currentValue >= alarmCycle.maxValue) {
     alarmCycle.currentValue = 0;
-    showModal.value = true;
-    console.log("game over");
-
+    gameOver();
     alarmsItem.value.forEach((item) => {
       item.color = "#f3f4f6";
     });
@@ -45,8 +55,7 @@ watchEffect(() => {
       </div>
     </div>
   </div>
-  <button @click="alarmCycle.incrementValue(1)">+</button>
-  <GameOverModal :show="showModal" @close="showModal = !showModal" />
+  <GameOverModal :show="showModal" @close="closeModal" />
 </template>
 
 <style lang="scss" scoped>
