@@ -48,7 +48,7 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
 
     if (citizensPopulation.value <= 0) {
       citizensPopulation.value = 0;
-      alarmCycle.incrementValue(999);
+      alarmCycle.incrementValue(10);
     }
   });
 
