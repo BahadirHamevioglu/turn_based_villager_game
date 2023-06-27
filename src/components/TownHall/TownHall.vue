@@ -93,6 +93,7 @@ const goldStore = useGoldStore();
       width: 100%;
       height: 100%;
       object-fit: fill;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.35));
     }
   }
 
