@@ -54,7 +54,7 @@ You can run the project on your local machine by following these steps:
 ## Contributors ✨
 
 - [@necatikcl](https://github.com/necatikcl) - Brainstorming, UI Design and Help for coding
-- [@iAli7] - Brainstorming
+- [@iAli7](https://github.com/iAli7) - Brainstorming
 
 Thank everyone who contributed to this project!
 
