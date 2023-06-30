@@ -1,7 +1,30 @@
-# Vue 3 + Vite
+# 🌟 Proje Adı
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> Projenin kısa açıklaması
 
-## Recommended IDE Setup
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kullanici/proje/blob/main/LICENSE)
+[![Build Status](https://travis-ci.com/kullanici/proje.svg?branch=main)](https://travis-ci.com/kullanici/proje)
+[![Coverage Status](https://coveralls.io/repos/github/kullanici/proje/badge.svg?branch=main)](https://coveralls.io/github/kullanici/proje?branch=main)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 📖 Açıklama
+
+Projenin daha detaylı açıklaması.
+
+## 🚀 Başlangıç
+
+Aşağıdaki adımları takip ederek projeyi yerel makinenizde çalıştırabilirsiniz.
+
+### Gereksinimler
+
+Projeyi çalıştırmak için aşağıdaki yazılımların kurulu olması gerekmektedir:
+
+- Node.js
+- npm
+
+### Kurulum
+
+1. Repoyu klonlayın
+
+```shell
+git clone https://github.com/kullanici/proje.git
+```
