@@ -1,30 +1,29 @@
-# 🌟 Proje Adı
+# Village Construction Game 🏰
 
-> Projenin kısa açıklaması
+![GitHub stars](https://img.shields.io/github/stars/your-username/your-repo-name?style=social)
+![GitHub license](https://img.shields.io/github/license/your-username/your-repo-name)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kullanici/proje/blob/main/LICENSE)
-[![Build Status](https://travis-ci.com/kullanici/proje.svg?branch=main)](https://travis-ci.com/kullanici/proje)
-[![Coverage Status](https://coveralls.io/repos/github/kullanici/proje/badge.svg?branch=main)](https://coveralls.io/github/kullanici/proje?branch=main)
+[Project Demo](https://your-project-demo-url.com)
 
-## 📖 Açıklama
+![Village Construction Game](https://your-project-screenshot-url.com)
 
-Projenin daha detaylı açıklaması.
+## Overview 📖
 
-## 🚀 Başlangıç
+This turn-based village construction game is developed using TS, SCSS, Vite, and Vue3. The aim of the game is to provide users with an experience of building and managing their own village. The game requires users to collect resources, construct buildings, and make strategic decisions for the development of the village.
 
-Aşağıdaki adımları takip ederek projeyi yerel makinenizde çalıştırabilirsiniz.
+## Features
 
-### Gereksinimler
+- Resource collection and management
+- Building construction and upgrades
+- Ability to make strategic decisions
 
-Projeyi çalıştırmak için aşağıdaki yazılımların kurulu olması gerekmektedir:
+## Installation and Usage Guide 🚀
 
-- Node.js
-- npm
+You can run the project on your local machine by following these steps:
 
-### Kurulum
+1. Clone the project:
 
-1. Repoyu klonlayın
+   ```shell
+   git clone https://github.com/your-username/your-repo-name.git
 
-```shell
-git clone https://github.com/kullanici/proje.git
-```
+   ```
