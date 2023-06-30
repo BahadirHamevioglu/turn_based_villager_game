@@ -1,8 +1,6 @@
 <script setup>
 import GBButton from "../Button.vue";
-
 import { useDayStore } from "../../stores/dayCycle";
-
 const dayCycle = useDayStore();
 </script>
 

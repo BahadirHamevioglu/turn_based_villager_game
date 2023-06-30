@@ -1,6 +1,9 @@
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
+import { useToasterStore } from "../toasters";
+const toasterStore = useToasterStore();
+
 type props = {
   storeName: string;
   startingValue: number;

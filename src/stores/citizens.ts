@@ -46,13 +46,6 @@ export const useCitizensStore = defineStore("citizensPopulation", () => {
       citizensPopulation.value = citizensPopulationMax.value;
     }
 
-    computed(() => {
-      if (citizensPopulation.value <= 0) {
-        citizensPopulation.value = 0;
-        alarmCycle.incrementValue(10);
-      }
-    });
-
     if (citizensPopulation.value <= 0) {
       citizensPopulation.value = 1;
       alarmCycle.incrementValue(alarmCycle.maxValue + 1);

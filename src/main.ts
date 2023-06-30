@@ -19,9 +19,6 @@ import router from "./router/index.js";
 // PINIA
 import { createPinia } from "pinia";
 
-// TOASTER
-import Toaster from "./components/Toaster.vue";
-
 // FONT AWESOME
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
