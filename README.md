@@ -27,14 +27,26 @@ You can run the project on your local machine by following these steps:
    git clone https://github.com/your-username/your-repo-name.git
    ```
 
-2. Clone the project:
+2. Navigate to the project directory::
 
    ```shell
-   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
    ```
 
-3. Clone the project:
+3. Install the necessary dependencies:
 
    ```shell
-   git clone https://github.com/your-username/your-repo-name.git
+   npm install
+   ```
+
+4. Start the project:
+
+   ```shell
+   npm run dev
+   ```
+
+5. View the project in your browser:
+
+   ```shell
+   https://localhost:5173
    ```
