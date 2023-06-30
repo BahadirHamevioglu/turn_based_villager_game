@@ -50,3 +50,8 @@ You can run the project on your local machine by following these steps:
    ```shell
    https://localhost:5173
    ```
+
+## Contributors ✨
+
+- [@necatikcl](https://github.com/necatikcl) - Brainstorming, UI Design and Help for coding
+- [@iAli7][def] - Brainstorming
