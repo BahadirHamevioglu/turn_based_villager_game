@@ -1,9 +1,9 @@
 # Village Construction Game 🏰
 
-![GitHub stars](https://img.shields.io/github/stars/your-username/your-repo-name?style=social)
-![GitHub license](https://img.shields.io/github/license/your-username/your-repo-name)
+![GitHub stars](https://img.shields.io/github/stars/BahadirHamevioglu/turn_based_villager_game?style=social)
+![GitHub license](https://img.shields.io/github/license/BahadirHamevioglu/turn_based_villager_game)
 
-[Project Demo](https://your-project-demo-url.com)
+[Project Demo](https://turn-based-villager-game.vercel.app)
 
 ![Village Construction Game](https://your-project-screenshot-url.com)
 
@@ -30,7 +30,7 @@ You can run the project on your local machine by following these steps:
 2. Navigate to the project directory::
 
    ```shell
-   cd your-repo-name
+   cd turn_based_villager_game
    ```
 
 3. Install the necessary dependencies:
