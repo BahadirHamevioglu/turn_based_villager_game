@@ -25,5 +25,16 @@ You can run the project on your local machine by following these steps:
 
    ```shell
    git clone https://github.com/your-username/your-repo-name.git
+   ```
 
+2. Clone the project:
+
+   ```shell
+   git clone https://github.com/your-username/your-repo-name.git
+   ```
+
+3. Clone the project:
+
+   ```shell
+   git clone https://github.com/your-username/your-repo-name.git
    ```
