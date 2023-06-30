@@ -1,4 +1,4 @@
-# Village Construction Game 🏰
+# Turn Based Village Construction Game 🏰
 
 ![GitHub stars](https://img.shields.io/github/stars/BahadirHamevioglu/turn_based_villager_game?style=social)
 ![GitHub license](https://img.shields.io/github/license/BahadirHamevioglu/turn_based_villager_game)
