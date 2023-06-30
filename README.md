@@ -24,7 +24,7 @@ You can run the project on your local machine by following these steps:
 1. Clone the project:
 
    ```shell
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/BahadirHamevioglu/turn_based_villager_game.git
    ```
 
 2. Navigate to the project directory::
