@@ -1,6 +1,4 @@
 <script setup>
-import GBButton from "../Button.vue";
-
 import { useLevelStore } from "../../stores/status/level";
 import { useCitizensStore } from "../../stores/citizens";
 import { useGoldStore } from "../../stores/resources/gold";
@@ -48,13 +46,6 @@ const goldStore = useGoldStore();
     <div class="town-hall-info">
       <div class="town-hall-info-top">
         <div class="town-hall-level">Level {{ levelStore.currentValue }}</div>
-        <GBButton
-          size="md"
-          :disabled="false"
-          type="primary"
-          @click="levelStore.incrementValue(1)"
-          >Upgrade</GBButton
-        >
       </div>
       <div class="town-hall-info-bottom">
         <div class="town-citizens">

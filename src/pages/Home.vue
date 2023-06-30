@@ -1,5 +1,6 @@
 <script setup>
 // COMPONENTS
+import DisasterList from "../components/Disaster-List/Disaster-List.vue";
 import GameStatus from "../components/Status/GameStatus.vue";
 import TownHall from "../components/TownHall/TownHall.vue";
 import Resources from "../components/Resources/Resources.vue";
@@ -10,6 +11,7 @@ import LifecycleButton from "../components/Lifecycle/Lifecycle-Button.vue";
 <template>
   <main>
     <div class="gameboard">
+      <DisasterList />
       <GameStatus />
       <div class="gameboard-grid-top">
         <TownHall />
@@ -48,5 +50,35 @@ main {
 
 body {
   font-family: "Inter Variable", sans-serif;
+}
+
+.disaster-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  position: absolute;
+  top: -45px;
+  left: 0;
+
+  .disaster {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(#000, 0.35));
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
 }
 </style>
