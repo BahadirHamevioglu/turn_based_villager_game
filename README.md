@@ -5,7 +5,7 @@
 
 [Project Demo](https://turn-based-villager-game.vercel.app)
 
-![Village Construction Game](https://your-project-screenshot-url.com)
+![Village Construction Game](https://cdn.leonardo.ai/users/41b6a754-9308-46b9-b9ca-fcb08e15f140/generations/8950226a-1b42-4602-b53f-42e338ba9066/DreamShaper_v5_A_small_quaint_town_nestled_in_a_lush_forest_re_1.jpg)
 
 ## Overview 📖
 
