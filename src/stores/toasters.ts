@@ -3,12 +3,13 @@ import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 
 const MStoSecond = (ms: number) => ms * 1000;
+const createID = (i: number) => i++;
 
 export const useToasterStore = defineStore("toaster", () => {
   const toasterArray = useStorage("toasterArray", Array<object>);
 
   type props = {
-    id: number;
+    id?: number;
     title: string;
     description: string;
     type: string;
@@ -17,8 +18,8 @@ export const useToasterStore = defineStore("toaster", () => {
 
   function addToast(props: props) {
     toasterArray.value.push({
-      id: toasterArray.value.length + 1,
-      title: props.title,
+      id: createID(toasterArray.value.length + 1),
+      title: props.title.toUpperCase(),
       description: props.description,
       type: props.type,
       duration: MStoSecond(props.duration),

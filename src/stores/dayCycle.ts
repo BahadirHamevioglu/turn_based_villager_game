@@ -24,7 +24,6 @@ export const useDayStore = defineStore("dayCycle", () => {
     citizensStore.incrementCitizensPopulationRandom(1);
 
     toasterStore.addToast({
-      id: toasterStore.toasterArray.length + 1,
       title: "NEW DAY",
       description: "Day " + currentDay.value + " has started.",
       type: "success",

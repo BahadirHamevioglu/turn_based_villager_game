@@ -1,8 +1,10 @@
 <script setup>
 import { useDisasterStore } from "../../stores/status/disaster";
+import { useDisasterCrisisStore } from "../../stores/disaster-crisis/disaster-crisis";
 import { watchEffect, computed } from "vue";
 
 const disasterCycle = useDisasterStore();
+const disasterCrisis = useDisasterCrisisStore();
 const disasterBar = computed(() => {
   return Array.from({ length: disasterCycle.maxValue }, (_, i) => ({
     id: i,
@@ -18,6 +20,10 @@ watchEffect(() => {
   if (disasterCycle.currentValue > disasterCycle.maxValue) {
     disasterCycle.currentValue = 0;
     console.log("DISASTER");
+
+    disasterCrisis.getRandomDisaster();
+    disasterCrisis.OccurrenceDisaster();
+
     disasterBar.value.forEach((item) => {
       item.color = "#f3f4f6";
     });

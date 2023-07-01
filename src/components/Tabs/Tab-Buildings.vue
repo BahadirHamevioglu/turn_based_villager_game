@@ -15,6 +15,7 @@ import { useAmusementCenterBuildStore } from "../../stores/buildings/amusementCe
 import { usePubBuildStore } from "../../stores/buildings/pub";
 import { useTavernBuildStore } from "../../stores/buildings/tavern";
 import { useSchoolBuildStore } from "../../stores/buildings/school";
+import { useHospitalBuildStore } from "../../stores/buildings/hospital";
 import { useGoldStore } from "../../stores/resources/gold";
 
 const houseBuildStore = useHouseBuildStore();
@@ -31,6 +32,7 @@ const amusementCenterBuildStore = useAmusementCenterBuildStore();
 const pubBuildStore = usePubBuildStore();
 const tavernBuildStore = useTavernBuildStore();
 const schoolBuildStore = useSchoolBuildStore();
+const hospitalBuildStore = useHospitalBuildStore();
 const goldStore = useGoldStore();
 
 const getCost = (store: BuildingStore) => -1 * store.building.cost;
@@ -110,6 +112,7 @@ const buildings = [
   { type: "school", imageKey: "school", store: schoolBuildStore },
   { type: "pub", imageKey: "pub", store: pubBuildStore },
   { type: "tavern", imageKey: "tavern", store: tavernBuildStore },
+  { type: "hospital", imageKey: "hospital", store: hospitalBuildStore },
 ];
 
 const buildingsData = buildings
