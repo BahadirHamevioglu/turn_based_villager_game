@@ -34,7 +34,6 @@ const props = defineProps({
 
       disabled ? 'disabled' : '',
     ]"
-    @click="$emit('click')"
     :disabled="disabled"
   >
     <slot />
